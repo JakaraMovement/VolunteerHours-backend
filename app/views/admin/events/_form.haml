@@ -1,0 +1,6 @@
+= simple_form_for [:admin, @event] do |f|
+  = f.input :name
+  = f.input :criteria
+  = f.input :max_limit
+  = f.input :region_id, as: :select, collection: Region.all, selected: nil
+  = f.submit 'Save', class: 'btn btn-primary'

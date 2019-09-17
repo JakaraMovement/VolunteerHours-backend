@@ -1,0 +1,16 @@
+= link_to 'Create Region', new_admin_region_path, class: 'button'
+%table
+  %thead
+    %tr
+      %th ID
+      %th Name
+  %tbody
+    - @regions.each do |region|
+      %tr
+        %td
+          = region.id
+        %td
+          = region.name
+        %td
+          =link_to 'edit', edit_admin_region_path(region), class: 'edit-action'
+          =link_to 'delete', admin_region_path(region), class: 'delete-action', data: { confirm: 'Are you sure?', method: :delete }

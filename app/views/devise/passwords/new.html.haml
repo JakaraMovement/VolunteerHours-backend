@@ -1,0 +1,13 @@
+.grid-x.registration.new-password
+  .cell.large-6.medium-6
+    .login-box
+      .grid
+        .cell
+          = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post}) do |f|
+            .row
+              %h5.text-center= t('.forgot_your_password', :default => 'Forgot your password?')
+              %br
+            .row
+              = f.email_field :email, autofocus: true, class: "large-12 columns", placeholder: "Email"
+            .row
+              = f.submit t('.send_me_reset_password_instructions', :default => "Send me reset password instructions"), class: "button expand large-12 large-centered columns"

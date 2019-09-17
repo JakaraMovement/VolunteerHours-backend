@@ -1,0 +1,60 @@
+.grid-x.events
+  .cell
+    %i.fa.fa-chevron-left{style:'color:#7CA5C2;margin-right:0.5rem;'}
+    = link_to 'Back to Events', events_path
+    %br
+    %br
+  .cell
+    %h2
+      = @event.name
+  .cell
+    %p.helper-text
+      = @event.region.name
+  .cell.large-8.medium-8
+    - if @event_volunteer_hour.present?
+      %table
+        %thead
+          %tr
+            %th
+              Time worked
+            %th
+              Submitted at
+            %th
+              Status
+        %tbody
+          %tr
+            %td
+              = @event_volunteer_hour.time_worked
+              hrs
+            %td
+              = @event_volunteer_hour.created_at
+            %td
+              - unless @event_volunteer_hour.status != 'rejected'
+                Pending Review
+              - else
+                Approved
+                %i.fa.fa-check{style: 'color: green'}
+
+    - else
+      .cell
+        = simple_form_for [ @event, @volunteer_hour ] do |f|
+          = f.input :time_worked, placeholder: '# of hours worked'
+          = f.submit 'Submit', class: 'button'    
+  .cell
+    %h4
+      Comments
+  .cell.large-8.medium-8
+    - @event.comments.each do |comment|
+      .cell
+        %span
+          = "#{comment.user.first_name} #{comment.user.last_name}"
+      .cell
+        = comment.text
+      / .cell
+      /   -# comment.image.each do |i|
+      /     %img{src: url_for(i), width: '200'}
+  .cell.large-8.medium-8
+    = simple_form_for [ @event, @comment ] do |f|
+      = f.input :text, :input_html => {rows: 4}, label: 'Comment ( optional )', class: 'helper-text'
+      =# f.file_field :image, multiple: true
+      = f.submit 'Submit', class: 'button'

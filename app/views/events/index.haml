@@ -1,0 +1,38 @@
+.grid-x.events
+	.cell.large-6.medium-6
+		= simple_form_for(@events_filter, url: events_path, method: :get) do |f|
+			= f.input :region, as: :select, collection: @regions, prompt: 'Select a Region', selected: (params[:events_filter].present? ? params[:events_filter][:region] : nil), input_html: {"data-remote" => true, onchange: "this.form.submit();"}
+	- if params[:events_filter].present?
+		.cell
+			= link_to 'See all Events', events_path
+			%br
+			%br
+		.cell
+			%h5 Events by Region
+			- unless @events.empty?
+				%p.helper-text
+					Click on an event to submit the hours volunteered.
+	- else
+		.cell
+			%h5 All Events
+			- unless @events.empty?
+				%p.helper-text
+					Click on an event to submit the hours volunteered.
+	
+	- if @events.empty? && params[:events_filter].present?
+		%p.helper-text
+			= "No events found in #{Region.find(params[:events_filter][:region]).name}."
+	- else
+		.cell.large-6.medium-6
+			%table
+				%thead
+					%tr
+						%th Name
+						%th Region
+				%tbody
+					- @events.each do |event|
+						%tr
+							%td
+								= link_to event.name, event_path(event)
+							%td
+								= event.region.name

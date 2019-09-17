@@ -1,0 +1,19 @@
+%table
+  %thead
+    %tr
+      %th ID
+      %th User
+      %th Comment
+      %th Images
+  %tbody
+    - @comments.each do |comment|
+      %tr
+        %td
+          = comment.id
+        %td
+          = "#{comment.user.first_name} #{comment.user.last_name}"
+        %td
+          = comment.text
+        %td
+          - comment.image.each do |i|
+            %img{ src: url_for(i), width: "90" }

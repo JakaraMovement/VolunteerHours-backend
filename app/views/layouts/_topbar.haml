@@ -1,0 +1,26 @@
+.navigation.top-bar
+  .top-bar-left
+    .page-container
+      .page-wrapper
+        .navigation-wrapper
+          %ul.dropdown.menu{"data-dropdown-menu" => ""}
+            %li
+              = link_to 'Admin Home', admin_path, style: 'padding-left:0'
+            %li
+              %a{:href => "/admin/events"} Events
+            %li
+              %a{:href => "/admin/volunteers"} Volunteers
+            %li
+              %a{:href => "/admin/volunteer_requests"} Volunteer Requests
+            %li
+              %a{:href => "/admin/regions"} Regions
+          %ul.dropdown.menu{"data-dropdown-menu" => ""}
+            - if user_signed_in?
+              %li.nav-item
+                = link_to destroy_user_session_path, method: :delete, class: 'nav-link' do
+                  %em.icon-notebook
+                  %span
+                    Logout
+            - else
+              %li.nav-item
+                = link_to 'Login', new_user_session_path, class: 'button'

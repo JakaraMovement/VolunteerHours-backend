@@ -1,0 +1,17 @@
+.navigation {
+	margin-bottom: 1.5rem;
+
+	.navigation-wrapper {
+		display: flex;
+    justify-content: space-between;
+
+    #sign-up-button {
+    	padding-right: 1rem;
+    }
+	}
+	
+	ul.dropdown {
+		display: flex;
+		align-items: center;
+	}
+}

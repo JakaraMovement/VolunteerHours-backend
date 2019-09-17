@@ -1,0 +1,24 @@
+%table
+  %thead
+    %tr
+      %th ID
+      %th First Name
+      %th Last Name
+      %th Phone number
+      %th email
+      %th address
+  %tbody
+    - @volunteers.each do |volunteer|
+      %tr
+        %td
+          = volunteer.id
+        %td
+          = volunteer.first_name
+        %td
+          = volunteer.last_name
+        %td
+          = volunteer.phone
+        %td
+          = volunteer.email
+        %td
+          = volunteer.address

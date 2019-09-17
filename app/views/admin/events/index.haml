@@ -1,0 +1,29 @@
+= link_to 'Create Event', new_admin_event_path, class: 'button'
+%table
+  %thead
+    %tr
+      %th ID
+      %th Name
+      %th Criteria
+      %th Max Limit
+      %th Region
+      %th
+  %tbody
+    - @events.each do |event|
+      %tr
+        %td
+          = event.id
+        %td
+          = event.name
+        %td
+          = event.criteria
+        %td
+          = event.max_limit
+        %td
+          = event.region.name
+        %td
+          =link_to 'edit', edit_admin_event_path(event), class: 'edit-action'
+          |
+          =link_to 'delete', admin_event_path(event), class: 'delete-action', data: { confirm: 'Are you sure?', method: :delete }
+          |
+          =link_to 'Show Comments', admin_event_comments_path(event), class: 'edit-action'

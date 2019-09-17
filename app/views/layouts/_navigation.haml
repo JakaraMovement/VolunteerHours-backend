@@ -1,0 +1,23 @@
+.navigation.top-bar
+	.top-bar-left
+		.page-container
+			.page-wrapper
+				.navigation-wrapper
+					%ul.dropdown.menu{"data-dropdown-menu" => ""}
+						%li.logo
+							Volunteer Management App
+						-# if user_signed_in?
+							%li
+								= link_to 'Events', events_path
+					%ul.dropdown.menu{"data-dropdown-menu" => ""}
+						- if user_signed_in?
+							%li.nav-item
+								= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do
+									%em.icon-notebook
+									%span
+										Logout
+						- else
+							%li.nav-item#sign-up-button
+								= link_to 'Sign up', new_user_registration_path, class: 'button'
+							%li.nav-item
+								= link_to 'Sign in', new_user_session_path, class: 'button'
