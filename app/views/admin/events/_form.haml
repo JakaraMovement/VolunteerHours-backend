@@ -1,6 +1,9 @@
-= simple_form_for [:admin, @event] do |f|
-  = f.input :name
-  = f.input :criteria
-  = f.input :max_limit
-  = f.input :region_id, as: :select, collection: Region.all, selected: nil
-  = f.submit 'Save', class: 'btn btn-primary'
+.grid-x
+	.cell.large-6.medium-6
+		= simple_form_for [:admin, @event] do |f|
+			= f.input :name
+			= f.input :criteria, input_html: {rows: '4'}
+			= f.input :max_limit
+			= f.input :region_id, as: :select, collection: Region.all, selected: nil
+			= f.submit 'Save', class: 'button'
+			= link_to 'Cancel', admin_events_path, class: 'button', style: 'margin-left:0.5rem;'

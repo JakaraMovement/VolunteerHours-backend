@@ -7,18 +7,17 @@
             %li
               = link_to 'Admin Home', admin_path, style: 'padding-left:0'
             %li
-              %a{:href => "/admin/events"} Events
+              = link_to 'Events', admin_events_path
             %li
-              %a{:href => "/admin/volunteers"} Volunteers
+              = link_to 'Volunteers', admin_users_path
             %li
-              %a{:href => "/admin/volunteer_requests"} Volunteer Requests
+              = link_to 'Review volunteer hours', admin_volunteer_requests_path
             %li
-              %a{:href => "/admin/regions"} Regions
+              = link_to 'Regions', admin_regions_path
           %ul.dropdown.menu{"data-dropdown-menu" => ""}
             - if user_signed_in?
               %li.nav-item
-                = link_to destroy_user_session_path, method: :delete, class: 'nav-link' do
-                  %em.icon-notebook
+                = link_to destroy_user_session_path, method: :delete, class: 'nav-link', style:'padding-right:0;' do
                   %span
                     Logout
             - else

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       resources :comments, only: :index
     end
     resources :regions
-    resources :volunteers
+    resources :users
     resources :volunteer_requests
     resources :volunteer_request_accept_reject, only: :update
   end
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   #       resources :comments, only: :index
   #     end
   #     resources :regions
-  #     resources :volunteers
+  #     resources :users
   #     resources :volunteer_requests
   #     resources :volunteer_request_accept_reject, only: :update
   #   end

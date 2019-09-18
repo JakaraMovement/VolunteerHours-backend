@@ -38,10 +38,12 @@ ActiveRecord::Schema.define(version: 2019_09_14_225243) do
 
   create_table "comments", force: :cascade do |t|
     t.text "text"
-    t.integer "user_id"
-    t.integer "event_id"
+    t.bigint "user_id"
+    t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_comments_on_event_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -108,9 +110,11 @@ ActiveRecord::Schema.define(version: 2019_09_14_225243) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "events", "regions"
-  add_foreign_key "user_events", "events"
-  add_foreign_key "user_events", "users"
-  add_foreign_key "volunteer_hours", "events"
-  add_foreign_key "volunteer_hours", "users"
+  add_foreign_key "comments", "events", on_delete: :cascade
+  add_foreign_key "comments", "users", on_delete: :cascade
+  add_foreign_key "events", "regions", on_delete: :cascade
+  add_foreign_key "user_events", "events", on_delete: :cascade
+  add_foreign_key "user_events", "users", on_delete: :cascade
+  add_foreign_key "volunteer_hours", "events", on_delete: :cascade
+  add_foreign_key "volunteer_hours", "users", on_delete: :cascade
 end

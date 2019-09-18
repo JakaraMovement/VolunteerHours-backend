@@ -1,8 +1,14 @@
+.cell
+  %i.fa.fa-chevron-left{style:'color:#7CA5C2;margin-right:0.5rem;'}
+  = link_to 'Back to Events', admin_events_path
+  %br
+  %br
 %table
   %thead
     %tr
       %th ID
       %th User
+      %th Event
       %th Comment
       %th Images
   %tbody
@@ -12,6 +18,8 @@
           = comment.id
         %td
           = "#{comment.user.first_name} #{comment.user.last_name}"
+        %td
+          = comment.event.name
         %td
           = comment.text
         %td
