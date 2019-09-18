@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
 
   authenticated do
+    root to: 'events#index'
     resources :events, only: %i[show index] do
       resources :comments
       resources :volunteer_hours
