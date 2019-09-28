@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Admin::EventsController < AdminController
   before_action :load_event, except: %i[index create new]
   def index
@@ -7,7 +5,7 @@ class Admin::EventsController < AdminController
   end
 
   def create
-    Event.create(event_params)
+    Event.create!(event_params)
     redirect_to admin_events_path
   end
 

@@ -4,3 +4,7 @@ public/*
 **/.DS_Store
 .ruby-version
 log/*
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+storage
+config/credentials*

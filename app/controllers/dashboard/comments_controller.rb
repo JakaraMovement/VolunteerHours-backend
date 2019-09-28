@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
-class CommentsController < ApplicationController
+class Dashboard::CommentsController < ApplicationController
   def create
     event = Event.find(params[:event_id])
     current_user.comments.create(comment_params.merge(event_id: event.id))

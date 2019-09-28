@@ -1,16 +1,19 @@
 Rails.application.routes.draw do
-  devise_for :users
-  unauthenticated do
-    root to: 'pages#index'
-  end
+  devise_for :users, controllers: { registrations: 'registrations' }
 
-  authenticated do
-    root to: 'events#index'
+  root to: 'pages#index'
+
+
+  namespace :dashboard do
+    get '/', to: 'welcome#index'
     resources :events, only: %i[show index] do
       resources :comments
       resources :volunteer_hours
     end
   end
+  
+  # ------------ ADMIN ROUTES ------------
+
   namespace :admin do
     get '/', to: 'welcome#index'
     resources :events do

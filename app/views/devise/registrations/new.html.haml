@@ -3,51 +3,120 @@
     .login-box
       .grid-x
         .cell
-          = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: {'data-abide' => '', novalidate: ''}) do |f|
+          = form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: {'data-abide' => '', novalidate: ''}) do |f|
             .row
               %h5.text-center= t('.sign_up', :default => "REGISTRATION")
               %br
+            .alert.callout{"data-abide-error" => "", :style => "display: none;"}
+              %p
+                %i.fi-alert
+                There are some errors in your form.
             .grid-x.grid-margin-x
               .cell.large-6.medium-6
-                = f.input :first_name, autofocus: true, class: "large-12 columns", placeholder: "First name", required: ''
-                .form-error
-                  First name is a required field.
+                %label
+                  First name
+                  = f.text_field :first_name, autofocus: true, placeholder: "First name", required: true
+                  %span.form-error
+                    First name is a required field.
               .cell.large-6.medium-6
-                = f.input :last_name, class: "large-12 columns", placeholder: "Last name", required: ''
-            .row
-              = f.email_field :email, class: "large-12 columns", placeholder: "Email", required: ''
-            .row
-              = f.password_field :password, autocomplete: "off", class: "large-12 columns", placeholder: "Password", required: ''
-            .row
-              = f.password_field :password_confirmation, autocomplete: "off", class: "large-12 columns", placeholder: "Password Confirmation", required: ''
-            .row
-              = f.label :birthday
-              .birthday-wrapper
-                = f.input :birthday, class: "large-12 columns", as: :date, start_year: Date.today.year - 90, end_year: Date.today.year - 12, :order => [:month, :day, :year], default: {year: '1995'}, label: false
-            .row
-              = f.input :address, class: "large-12 columns", placeholder: "address", required: ''
+                %label
+                  Last name
+                  = f.text_field :last_name, autofocus: true, placeholder: "last name", required: true
+                  %span.form-error
+                    Last name is a required field.
+            .cell
+              %label
+                Email
+                = f.email_field :email, placeholder: "Email", required: '', pattern: 'email'
+                %span.form-error
+                  Email is a required field.
+            .cell
+              %label
+                Password
+                = f.password_field :password, autocomplete: "off", placeholder: "Password", required: ''
+                %span.form-error
+                  Password is a required field.
+            .cell
+              %label
+                Password confirmation
+                = f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password Confirmation", required: '', "data-equalto" => "password"
+                %span.form-error
+                  Password is a required field.
+            .cell
+              %label
+                Birthday
+                .birthday-wrapper
+                  = f.date_select :birthday, {start_year: Date.today.year - 90, end_year: Date.today.year - 12, :order => [:month, :day, :year], default: {year: '1995'}, prompt: {day: 'Select day', month: 'Select month', year: 'Select year'}}, {required: true}
+                %span.form-error
+                  Birthday is a required field.
+            .cell
+              %label
+                School year
+                = f.select :school_year, school_years, {prompt: 'Select school year'}, required: ''
+                %span.form-error
+                  School year is a required field.
+            .cell
+              %label
+                Address
+                = f.text_field :address, placeholder: "address", required: ''
+                %span.form-error
+                  Address is a required field.
             .grid-x.grid-margin-x
               .cell.large-4.medium-4
-                = f.input :city, class: "large-12 columns", label: 'city', required: ''
+                %label
+                  City
+                  = f.text_field :city, required: '', placeholder: 'City'
+                  %span.form-error
+                    City is a required field.
               .cell.large-4.medium-4
-                = f.input :state, class: "large-12 columns", label: 'state', as: :select, collection: us_states, required: ''
+                %label
+                  State
+                  = f.select :state, us_states, {prompt: 'Select state'}, {required: ''}
+                  %span.form-error
+                    State is a required field.
               .cell.large-4.medium-4
-                = f.input :zip_code, class: "large-12 columns", required: ''
-            .row
-              = f.input :gender, as: :select, collection: User.genders.keys, label: 'Gender', required: ''
-            .row
-              = f.input :phone, class: "large-12 columns", label: 'phone', required: ''
+                %label
+                  Zip code
+                  = f.text_field :zip_code, required: '', placeholder: 'Zip code'
+                  %span.form-error
+                    Zip code is a required field.
+            .cell
+              %label
+                Gender
+                = f.select :gender, User.genders.keys, {prompt: 'Select gender'}, required: ''
+                %span.form-error
+                  Gender is a required field.
+            .cell
+              %label
+                Phone number
+                = f.phone_field :phone, required: '', placeholder: 'Phone number'
+                %span.form-error
+                  Phone is a required field.
             .grid-x.grid-margin-x
               .cell.large-6.medium-6
-                = f.input :parent_first_name, class: "large-12 columns", required: ''
+                %label
+                  Parent first name
+                  = f.text_field :parent_first_name, required: '', placeholder: "Parent's first name"
+                  %span.form-error
+                    Parent's first name is a required field.
               .cell.large-6.medium-6
-                = f.input :parent_last_name, class: "large-12 columns", required: ''
-            .row
-              = f.input :parent_email, class: "large-12 columns", required: ''
-            .row
-              = f.input :parent_phone, class: "large-12 columns", required: ''
-            .row
-              = f.input :school_year, as: :select, collection: school_years, class: "large-12 columns", required: ''
-            .row
+                %label
+                  Parent last name
+                  = f.text_field :parent_last_name, required: '', placeholder: "Parent's last name"
+                  %span.form-error
+                    Parent's last name is a required field.
+            .cell
+              %label
+                Parent email
+                = f.email_field :parent_email, required: '', placeholder: "Parent's email", pattern: 'email'
+                %span.form-error
+                  Parent email is a required field.
+            .cell
+              %label
+                Parent phone number
+                = f.text_field :parent_phone, required: '', placeholder: "Parent's phone number"
+                %span.form-error
+                  Parent's phone number is a required field.
+            .cell
               = f.submit t('.sign_up', :default => "Sign up"), class: "button"
           = render "devise/shared/links"

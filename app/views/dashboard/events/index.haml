@@ -1,10 +1,10 @@
 .grid-x.events
 	.cell.large-6.medium-6
-		= simple_form_for(@events_filter, url: events_path, method: :get) do |f|
+		= simple_form_for(@events_filter, url: dashboard_events_path, method: :get) do |f|
 			= f.input :region, as: :select, collection: @regions, prompt: 'Select a Region', selected: (params[:events_filter].present? ? params[:events_filter][:region] : nil), input_html: {"data-remote" => true, onchange: "this.form.submit();"}
 	- if params[:events_filter].present?
 		.cell
-			= link_to 'See all Events', events_path
+			= link_to 'See all Events', dashboard_events_path
 			%br
 			%br
 		.cell
@@ -33,6 +33,6 @@
 					- @events.each do |event|
 						%tr
 							%td
-								= link_to event.name, event_path(event)
+								= link_to event.name, dashboard_event_path(event)
 							%td
 								= event.region.name

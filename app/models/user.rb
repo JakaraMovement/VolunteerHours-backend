@@ -9,26 +9,30 @@ class User < ApplicationRecord
   has_many :volunteer_hours, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  validates :first_name,
-            :last_name,
-            :address,
-            :birthday,
-            :gender,
-            :phone,
-            :city,
-            :state,
-            :zip_code,
-            :parent_email,
-            :parent_first_name,
-            :parent_last_name,
-            :parent_phone,
-            :school_year, presence: true
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
-  validates :parent_email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :address, presence: true
+  validates :birthday, presence: true
+  validates :gender, presence: true
+  validates :phone, presence: true
+  validates :city, presence: true
+  validates :state, presence: true
+  validates :zip_code, presence: true
+  validates :parent_email, presence: true
+  validates :parent_first_name, presence: true
+  validates :parent_last_name, presence: true
+  validates :parent_phone, presence: true
+  validates :school_year, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates :parent_email, presence: true
 
   enum gender: {
-    male: 0,
-    female: 1,
-    other: 2
+    Female: 0,
+    Male: 1,
+    Other: 2
   }
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 end

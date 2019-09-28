@@ -1,10 +1,8 @@
-# frozen_string_literal: true
-
-class VolunteerHoursController < ApplicationController
+class Dashboard::VolunteerHoursController < ApplicationController
   def create
     event = Event.find(params[:event_id])
     current_user.volunteer_hours.create(volunteer_hour_params.merge(event_id: event.id, status: 'requested'))
-    redirect_to event_path(event)
+    redirect_to dashboard_event_path(event)
   end
 
   def new

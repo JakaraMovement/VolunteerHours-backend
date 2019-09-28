@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 		devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:name, :email, :password, :current_password, :is_female, :date_of_birth) }
 	end
 
-	# def after_sign_in_path_for(resource)
-	# 	redirect_to resource.admin? ? admin_path : events_path
-	# end
+	def after_sign_in_path_for(resource)
+		resource.admin? ? admin_path : dashboard_path
+	end
 end

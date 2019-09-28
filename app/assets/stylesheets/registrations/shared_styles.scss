@@ -4,14 +4,12 @@
 	justify-content: center;
 
 	.birthday-wrapper {
-		.user_birthday {
-			display: flex;
-			justify-content: space-between;
+		display: flex;
+		justify-content: space-between;
 
-			select#user_birthday_2i,
-			select#user_birthday_3i {
-				margin-right: 2rem;
-			}
+		select#user_birthday_2i,
+		select#user_birthday_3i {
+			margin-right: 2rem;
 		}
 	}
 }

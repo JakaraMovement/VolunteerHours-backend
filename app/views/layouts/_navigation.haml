@@ -4,11 +4,14 @@
 			.page-wrapper
 				.navigation-wrapper
 					%ul.dropdown.menu{"data-dropdown-menu" => ""}
-						%li.logo
-							Volunteer Management App
-						-# if user_signed_in?
+						- if user_signed_in?
+							%li.logo
+								%i.fa.fa-home{style:'color:#7CA5C2;margin-right:-0.5rem;'}
+								= link_to 'VM App', dashboard_path
 							%li
-								= link_to 'Events', events_path
+								= link_to 'Events', dashboard_events_path
+						- else
+							%li.logo VM App
 					%ul.dropdown.menu{"data-dropdown-menu" => ""}
 						- if user_signed_in?
 							%li.nav-item

@@ -1,6 +1,6 @@
-# frozen_string_literal: true
+class Dashboard::EventsController < ApplicationController
+  before_action :authenticate_user!
 
-class EventsController < ApplicationController
   def index
     @regions = Region.all
     @events_filter = EventsFilter.new(events_filter_params)
@@ -13,7 +13,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @event_volunteer_hour = current_user.volunteer_hours.first
+    @event_volunteer_hour = @event.volunteer_hours.first
     @comment = Comment.new
     @volunteer_hour = VolunteerHour.new
   end

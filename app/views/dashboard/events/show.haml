@@ -1,7 +1,7 @@
 .grid-x.events
   .cell
     %i.fa.fa-chevron-left{style:'color:#7CA5C2;margin-right:0.5rem;'}
-    = link_to 'Back to Events', events_path
+    = link_to 'Back to Events', dashboard_events_path
     %br
     %br
   .cell
@@ -39,7 +39,7 @@
 
     - else
       .cell
-        = simple_form_for [ @event, @volunteer_hour ] do |f|
+        = simple_form_for [ :dashboard, @event, @volunteer_hour ] do |f|
           = f.input :time_worked, placeholder: '# of hours worked'
           = f.submit 'Submit', class: 'button'    
   .cell
@@ -56,7 +56,7 @@
       /   -# comment.image.each do |i|
       /     %img{src: url_for(i), width: '200'}
   .cell.large-8.medium-8
-    = simple_form_for [ @event, @comment ] do |f|
+    = simple_form_for [ :dashboard, @event, @comment ] do |f|
       = f.input :text, :input_html => {rows: 4}, label: 'Comment ( optional )', class: 'helper-text'
       =# f.file_field :image, multiple: true
       = f.submit 'Submit', class: 'button'
