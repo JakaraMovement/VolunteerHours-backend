@@ -6,4 +6,38 @@
 	.form-thumbnail {
 		margin-bottom: 1rem;
 	}
+	.event_start_time,
+	.event_end_time {
+		display: flex;
+		align-items: baseline;
+	}
+	#event_start_time_1i,
+	#event_start_time_2i,
+	#event_start_time_3i,
+	#event_end_time_1i,
+	#event_end_time_2i,
+	#event_end_time_3i {
+		margin-right: 0.5rem;
+	}
+	#event_start_time_1i,
+	#event_end_time_1i {
+		width: 80%;
+	}
+	#event_start_time_3i,
+	#event_start_time_4i,
+	#event_start_time_5i,
+	#event_end_time_3i,
+	#event_end_time_4i,
+	#event_end_time_5i {
+		width: 70%;
+	}
+	#event_start_time_4i,
+	#event_end_time_4i {
+		margin-right: 0.5rem;
+		margin-left: 0.5rem;
+	}
+	#event_start_time_5i,
+	#event_end_time_5i {
+		margin-left: 0.5rem;	
+	}
 }

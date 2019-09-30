@@ -1,12 +1,12 @@
 .navigation.top-bar
 	.top-bar-left
 		.page-container
-			.page-wrapper
+			.nav-page-wrapper
 				.navigation-wrapper
 					%ul.dropdown.menu{"data-dropdown-menu" => ""}
 						- if user_signed_in?
 							%li.logo
-								%i.fa.fa-home{style:'color:#7CA5C2;margin-right:-0.5rem;'}
+								%i.fa.fa-home
 								= link_to 'VM App', dashboard_path
 							%li
 								= link_to 'Events', dashboard_events_path

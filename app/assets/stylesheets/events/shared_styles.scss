@@ -2,7 +2,56 @@
 	.helper-text {
 		color: #696969;
 	}
-	h2 {
-		margin: 0;
+	h2.filter-by-text {
+		font-size: 1rem;
+	}
+	.event-container {
+
+		.event-wrapper {
+			box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.25);
+			border-radius: 5px;
+
+			.event-image {
+				width: 100%;
+				height: 180px;
+				background-size: cover;
+				background-position: center bottom;
+				border-top-left-radius: 5px;
+				border-top-right-radius: 5px;
+			}
+			.event-context-wrapper {
+				padding: 1.25em;
+				position: relative;
+				height: 150px;
+				background-color: #fff;
+				border-bottom-left-radius: 5px;
+				border-bottom-right-radius: 5px;
+
+				h2.event-name {
+					margin: 0;
+					font-size: 1.25rem;
+					color: #003366;
+				}
+				.event-region {
+					text-transform: uppercase;
+					font-size: 0.75rem;
+					color: #696969;
+					margin: 0;
+				}
+				.event-date,
+				.event-time {
+					position: absolute;
+					color: #696969;
+					bottom: 0;
+				}
+				.event-date {
+					left: 1.25rem;
+				}
+				.event-time {
+					right: 1.25rem;
+				}
+			}
+		}
+
 	}
 }

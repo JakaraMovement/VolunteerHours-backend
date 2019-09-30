@@ -1,0 +1,3 @@
+%h2.filter-by-text Filter by region:
+= simple_form_for(@events_filter, url: dashboard_events_path, method: :get) do |f|
+	= f.input :region, as: :select, collection: @regions, prompt: 'Select a Region', selected: (params[:events_filter].present? ? params[:events_filter][:region] : nil), label: false, input_html: {"data-remote" => true, onchange: "this.form.submit();"}

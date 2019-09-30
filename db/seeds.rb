@@ -1,17 +1,17 @@
 User.create([
 	{
-		first_name: 'Test',
-		last_name: 'User',
+		first_name: 'David',
+		last_name: 'Murphy',
 		birthday: Time.now,
 		phone: '555-324-4556',
 		address: '123 Test Dr',
 		city: 'Fresno',
 		state: 'CA',
 		zip_code: '93726',
-		email: 'test@drive.com',
+		email: 'dmurphy@test.com',
 		password: '123456',
 		password_confirmation: '123456',
-		gender: 'male',
+		gender: 'Male',
 		parent_email: 'parent@test.com',
 		parent_first_name: 'Test',
 		parent_last_name: 'Parent',
@@ -19,18 +19,18 @@ User.create([
 		school_year: 'High School Freshman'
 	},
 	{
-		first_name: 'Test',
-		last_name: 'User2',
+		first_name: 'Stephen',
+		last_name: 'Curry',
 		birthday: Time.now,
 		phone: '555-324-4556',
 		address: '345 Test Dr',
 		city: 'San Jose',
 		state: 'CA',
 		zip_code: '95134',
-		email: 'test2@drive.com',
-		password: 'Qwerty.',
-		password_confirmation: 'Qwerty.',
-		gender: 'male',
+		email: 'scurry@test.com',
+		password: '123456',
+		password_confirmation: '123456',
+		gender: 'Male',
 		parent_email: 'parent@test.com',
 		parent_first_name: 'Test2',
 		parent_last_name: 'Parent',
@@ -38,19 +38,19 @@ User.create([
 		school_year: 'High School Senior'
 	},
 	{
-		first_name: 'Test',
-		last_name: 'User2',
+		first_name: 'Ajay',
+		last_name: 'Singh',
 		birthday: Time.now,
 		phone: '555-324-4556',
 		address: '345 Test Dr',
 		city: 'San Jose',
 		state: 'CA',
 		zip_code: '95134',
-		email: 'admin@admin.com',
+		email: 'asingh@test.com',
 		password: '123456',
 		password_confirmation: '123456',
 		admin: true,
-		gender: 'male',
+		gender: 'Male',
 		parent_email: 'parent@test.com',
 		parent_first_name: 'Test2',
 		parent_last_name: 'Parent',
@@ -64,15 +64,15 @@ regions.each {|region| Region.create(name: region)}
 
 Event.create([
 	{
-		name: 'Event1',
+		name: 'Sikholars',
 		criteria: 'Criteria1',
-		max_limit: 3,
+		location: 'Robobank Arena',
 		region_id: Region.first.id
 	},
 	{
-		name: 'Event1',
+		name: 'Misl Bay - Art Show',
 		criteria: 'Criteria2',
-		max_limit: 5,
+		location: '1188 Murphy Ave San Jose, CA 95131',
 		region_id: Region.last.id
 	}
 ])

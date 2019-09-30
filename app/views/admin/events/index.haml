@@ -6,8 +6,9 @@
         %th ID
         %th Name
         %th Image
-        %th Criteria
-        %th Max Limit
+        %th Location
+        %th Start Time
+        %th End Time
         %th Region
         %th Actions
     %tbody
@@ -20,9 +21,11 @@
           %td
             = image_tag event_image_or_default_url(event), class: 'thumbnail'
           %td
-            = event.criteria
+            = event.location
           %td
-            = event.max_limit
+            = format_date(event.start_time)
+          %td
+            = format_date(event.end_time)
           %td
             = event.region.name
           %td

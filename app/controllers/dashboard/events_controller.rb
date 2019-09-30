@@ -5,9 +5,9 @@ class Dashboard::EventsController < ApplicationController
     @regions = Region.all
     @events_filter = EventsFilter.new(events_filter_params)
     if @events_filter.region.present?
-      @events = Event.where(region_id: @events_filter.region)
+      @events = Event.where(region_id: @events_filter.region).order(:start_time)
     else
-      @events = Event.all
+      @events = Event.order(:start_time)
     end
   end
 

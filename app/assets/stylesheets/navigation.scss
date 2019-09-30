@@ -1,22 +1,45 @@
-.navigation {
-	margin-bottom: 1.5rem;
+@import 'foundation_and_overrides';
 
+.navigation {
+	background-color: #fff;
+	border-bottom: 1px solid #ddd;
+	position: fixed;
+	width: 100%;
+	opacity: 0.95;
+	z-index: 1;
+
+	.nav-page-wrapper {
+		@include breakpoint(1232px) {
+			width: 1200px;
+			margin: 0.5rem auto;
+		}
+	}
 	.navigation-wrapper {
 		display: flex;
-    justify-content: space-between;
+		justify-content: space-between;
 
-    #sign-up-button {
-    	padding-right: 1rem;
-    }
+		#sign-up-button {
+			padding-right: 1rem;
+		}
 	}
 	
 	ul.dropdown {
 		display: flex;
 		align-items: center;
+		background-color: #fff;
+
+		a {
+			color: #003366;
+		}
 	}
 
 	.logo {
 		display: flex;
 		align-items: center;
+
+		.fa.fa-home {
+			color: #003366;
+			margin-right: -0.5rem;
+		}
 	}
 }

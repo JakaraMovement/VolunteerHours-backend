@@ -49,6 +49,9 @@ ActiveRecord::Schema.define(version: 2019_09_14_225243) do
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.text "criteria"
+    t.string "location"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.integer "max_limit"
     t.bigint "region_id"
     t.datetime "created_at", null: false
@@ -79,10 +82,10 @@ ActiveRecord::Schema.define(version: 2019_09_14_225243) do
     t.datetime "remember_created_at"
     t.string "first_name"
     t.string "last_name"
-    t.string "address"
     t.date "birthday"
     t.integer "gender"
     t.string "phone"
+    t.string "address"
     t.string "city"
     t.string "state"
     t.string "zip_code"
