@@ -42,8 +42,9 @@
 
         - else
           .cell
-            = simple_form_for [ :dashboard, @event, @volunteer_hour ] do |f|
-              = f.input :time_worked, placeholder: '# of hours worked'
+            = form_for [ :dashboard, @event, @volunteer_hour ] do |f|
+              = f.number_field :time_worked, placeholder: '# of hours worked'
+              %p.help-text= "max limit: #{@event.max_limit} hrs"
               = f.submit 'Submit', class: 'button'    
       .cell
         %h4

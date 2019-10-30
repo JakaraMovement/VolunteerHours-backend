@@ -49,6 +49,9 @@
 				}
 			}
 		}
+		.nav-item {
+			margin-left: 1rem;
+		}
 	}
 	
 	ul.dropdown {
@@ -61,10 +64,16 @@
 		}
 	}
 
-	.logo {
+	#logo {
 		display: flex;
 		align-items: center;
 
+		#logo-link {
+			padding: 0;
+		}
+		img {
+			width: 100px;
+		}
 		.fa.fa-home {
 			color: #004F71;
 			margin-right: -0.5rem;

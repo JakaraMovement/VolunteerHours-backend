@@ -6,4 +6,6 @@ class Event < ApplicationRecord
   belongs_to :region
 
   has_one_attached :event_image
+
+  validates :max_limit, presence: true
 end

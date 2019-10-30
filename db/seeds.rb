@@ -67,12 +67,14 @@ Event.create([
 		name: 'Sikholars',
 		criteria: 'Criteria1',
 		location: 'Robobank Arena',
+		max_limit: 2,
 		region_id: Region.first.id
 	},
 	{
 		name: 'Misl Bay - Art Show',
 		criteria: 'Criteria2',
 		location: '1188 Murphy Ave San Jose, CA 95131',
+		max_limit: 4,
 		region_id: Region.last.id
 	}
 ])

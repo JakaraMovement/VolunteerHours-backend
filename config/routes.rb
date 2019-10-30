@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   # ------------ ADMIN ROUTES ------------
 
   namespace :admin do
-    get '/', to: 'welcome#index'
+    get '/', to: 'events#index'
     resources :events do
       resources :comments, only: :index
     end

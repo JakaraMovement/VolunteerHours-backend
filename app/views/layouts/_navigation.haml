@@ -5,13 +5,14 @@
 				.navigation-wrapper
 					%ul.dropdown.menu{"data-dropdown-menu" => ""}
 						- if user_signed_in?
-							%li.logo
-								%i.fa.fa-home
-								= link_to 'VM App', dashboard_path
-							%li
+							%li#logo
+								= link_to dashboard_path, id: 'logo-link' do
+									= image_tag 'jakara-logo.png'	
+							%li.nav-item
 								= link_to 'Events', dashboard_events_path
 						- else
-							%li.logo VM App
+							%li#logo
+								= image_tag 'jakara-logo.png'
 					%ul.dropdown.menu{"data-dropdown-menu" => ""}
 						- if user_signed_in?
 							%li.nav-item
