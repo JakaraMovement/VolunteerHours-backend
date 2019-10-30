@@ -1,7 +1,9 @@
 section#home-page {
-	height: 100vH;
+	height: calc(100vH - 40px);
 	background: image-url('home-bg.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: center;
+	background-position: top;
+	position: relative;
+	top: 40px;
 }
