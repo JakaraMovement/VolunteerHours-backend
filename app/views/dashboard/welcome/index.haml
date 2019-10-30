@@ -1,5 +1,6 @@
-%h1{style:'font-size:2rem'}
-	= "Welcome to your dashboard, #{current_user.first_name}!"
-
-%p
-	= "Total hours volunteered: #{@total_hours_volunteered}"
+.page-container
+	.page-wrapper
+		%h1{style:'font-size:2rem'}
+			= "Welcome to your dashboard, #{current_user.first_name}!"
+		%p
+			= "Total hours volunteered: #{@total_hours_volunteered}"

@@ -4,6 +4,7 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:charset => "utf-8"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %meta{:content => "no-cache", :name => "turbolinks-cache-control"}/
     %title= content_for?(:title) ? yield(:title) : "Untitled"
     = stylesheet_link_tag    "application"
     =# stylesheet_link_tag    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/fontawesome.css"
@@ -11,6 +12,4 @@
     = csrf_meta_tags
   %body
     = render partial: 'layouts/navigation'
-    .page-container
-      .page-wrapper
-        = yield
+    = yield

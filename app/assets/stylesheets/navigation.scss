@@ -11,7 +11,7 @@
 	.nav-page-wrapper {
 		@include breakpoint(1232px) {
 			width: 1200px;
-			margin: 0.5rem auto;
+			margin: 0.25rem auto;
 		}
 	}
 	.navigation-wrapper {
@@ -19,7 +19,35 @@
 		justify-content: space-between;
 
 		#sign-up-button {
-			padding-right: 1rem;
+			margin-right: 0.5rem;
+			border: 1px solid #fff;
+			transition: 0.5s all;
+
+			&:hover {
+				border: 1px solid #D9E1E2;
+			}
+
+			a {
+				font-weight: bold;
+				background-color: #fff !important;
+			}
+		}
+		#sign-in-button {
+			border: 1px solid #004F71;
+			background-color: #fff;
+			transition: 0.5s all;
+			
+			&:hover {
+				background-color: #004F71;
+			}
+			a {
+				color: #004F71;
+				transition: 0.5s all;
+
+				&:hover {
+					color: #fff;
+				}
+			}
 		}
 	}
 	
@@ -29,7 +57,7 @@
 		background-color: #fff;
 
 		a {
-			color: #003366;
+			color: #004F71;
 		}
 	}
 
@@ -38,7 +66,7 @@
 		align-items: center;
 
 		.fa.fa-home {
-			color: #003366;
+			color: #004F71;
 			margin-right: -0.5rem;
 		}
 	}

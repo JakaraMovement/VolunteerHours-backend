@@ -21,6 +21,6 @@
 										Logout
 						- else
 							%li.nav-item#sign-up-button
-								= link_to 'Sign up', new_user_registration_path, class: 'button'
-							%li.nav-item
-								= link_to 'Sign in', new_user_session_path, class: 'button'
+								= link_to 'Sign up', new_user_registration_path
+							%li.nav-item#sign-in-button
+								= link_to 'Sign in', new_user_session_path

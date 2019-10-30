@@ -34,10 +34,19 @@ body {
 	h1.page-title {
 		margin: 0;
 		font-size: 2rem;
-		color: #003366;
+		color: #004F71;
 	}
 
 	.helper-text {
 		color: #696969;
+	}
+	.vm-button {
+		color: #fff !important;
+		background-color: #004F71;
+		transition: 0.5s all;
+
+		 &:hover {
+		 	background-color: #01618a;
+		 }
 	}
 }

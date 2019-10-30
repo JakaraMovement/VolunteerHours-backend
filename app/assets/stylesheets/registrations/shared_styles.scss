@@ -1,26 +1,32 @@
-.registration {
-	margin-bottom: 2rem;
-	display: flex;
-	justify-content: center;
+.page-container {
+	.page-wrapper.reg-wrapper {
+		padding: 150px 0 1.5rem;
+		
+		.registration {
+			margin-bottom: 2rem;
+			display: flex;
+			justify-content: center;
 
-	.birthday-wrapper {
-		display: flex;
-		justify-content: space-between;
+			.birthday-wrapper {
+				display: flex;
+				justify-content: space-between;
 
-		select#user_birthday_2i,
-		select#user_birthday_3i {
-			margin-right: 2rem;
+				select#user_birthday_2i,
+				select#user_birthday_3i {
+					margin-right: 2rem;
+				}
+			}
 		}
-	}
-}
 
-.sign-in-page {
-	margin-bottom: 2rem;
-	display: flex;
-	justify-content: center;
+		.sign-in-page {
+			margin-bottom: 2rem;
+			display: flex;
+			justify-content: center;
 
-	.helper-text {
-		text-align: center;
-		color: #696969;
+			.helper-text {
+				text-align: center;
+				color: #696969;
+			}
+		}
 	}
 }
