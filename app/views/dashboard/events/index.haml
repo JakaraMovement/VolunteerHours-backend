@@ -1,24 +1,16 @@
-- selected_region = Region.find(params[:events_filter][:region]).name if params[:events_filter].present?
+- selected_region = Region.find(params[:region_id]).name if params[:region_id].present?
+.cell#filter-by-container
+	#filter-by-wrapper
+		= render partial: 'dashboard/events/filter_by'
 .page-container
 	.page-wrapper
 		.grid-x.events
-			/ .cell
-			/ 	%h1.page-title Events
-			/ 	- unless @events.empty?
-			/ 		%p.helper-text
-			/ 			Click on an event to submit the hours volunteered.
-			.cell.large-4.medium-4.filter-by-container
-				= render partial: 'dashboard/events/filter_by'
-			- if @events.empty? && params[:events_filter].present?
+			- if @events.empty? && params[:region_id].present?
 				.cell
 					%p.helper-text
 						= "No events found in #{selected_region}."
-					= link_to 'See all Events', dashboard_events_path, class: 'page-title'
-			- elsif params[:events_filter].present?
+			- elsif params[:region_id].present?
 				.cell
-					= link_to 'See all Events', dashboard_events_path, class: 'page-title'
-					%br
-					%br
-					%h5= "Events in #{selected_region}"
+					%h5#events-in-label= "Events in #{selected_region}"
 			.cell
 				= render partial: 'dashboard/events/event'

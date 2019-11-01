@@ -1,3 +1,20 @@
-%h2.filter-by-text Filter by region:
-= simple_form_for(@events_filter, url: dashboard_events_path, method: :get) do |f|
-	= f.input :region, as: :select, collection: @regions, prompt: 'Select a Region', selected: (params[:events_filter].present? ? params[:events_filter][:region] : nil), label: false, input_html: {"data-remote" => true, onchange: "this.form.submit();"}
+%h2.filter-by-text Filter by:
+#filter-options-wrapper
+	#regions-wrapper
+		= form_with url: filter_dashboard_events_path, method: :get do |f|
+			= f.select :region_id, options_for_select(Region.all.collect{|region| [region.name, region.id]}, params[:region_id].present? ? [Region.find(params[:region_id]).name, params[:region_id]] : nil), {prompt: 'Region'}, class: ('selected-region' if params[:region_id].present?), 'data-remote' => true, onchange: 'this.form.submit();'
+	#past-events-wrapper
+		= form_with url: filter_dashboard_events_path, method: :get do |f|
+			= hidden_field_tag :past_events, true
+			.event-type#past-events{onclick: "$(this).closest('form').submit()", class: ('selected-filter' if params[:past_events])}
+				Past Events
+	#upcoming-events-wrapper
+		= form_with url: filter_dashboard_events_path, method: :get do |f|
+			= hidden_field_tag :upcoming_events, true
+			.event-type#upcoming-events{onclick: "$(this).closest('form').submit()", class: ('selected-filter' if params[:upcoming_events])}
+				Upcoming Events
+	#clear-filters-wrapper
+		= form_with url: filter_dashboard_events_path, method: :get do |f|
+			= hidden_field_tag :clear_filters, true
+			#clear-filters{onclick: "$(this).closest('form').submit()"}
+				Clear Filters

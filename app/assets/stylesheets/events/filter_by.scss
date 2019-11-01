@@ -1,0 +1,68 @@
+@import 'foundation_and_overrides';
+
+#filter-by-container {
+	top: 72.78px;
+	position: relative;
+	padding: 0.5rem 1rem 0;
+	box-shadow: 0px 1px 7px -5px rgba(134, 134, 134, 0.7);
+
+	#filter-by-wrapper {
+		@include breakpoint(1232px) {
+			width: 1200px;
+			margin: 0 auto;
+		}
+		h2.filter-by-text {
+			color: #004F71;
+			font-size: 0.9rem;
+			font-weight: 500;
+			text-transform: uppercase;
+		}
+		#filter-options-wrapper {
+			display: flex;
+			align-items: center;
+
+			#regions-wrapper {
+				form {
+					width: 200px;
+					max-width: 100%;
+
+					select {
+						&.selected-region,
+						&:hover {
+							cursor: pointer;
+							border: 1px solid #004F71;
+						}
+					}
+				}
+			}
+			.event-type {
+				cursor: pointer;
+				margin: 0 1rem 1rem;
+				transition: 0.5s all;
+				background-color: #fff;
+				padding: 0.407rem 0.75rem;
+				border: 1px solid #cacaca;
+
+				&:hover {
+					border: 1px solid #004F71;
+				}
+			}
+			#upcoming-events {
+				margin: 0 0 1rem 0;
+				padding: 0.407rem 0.75rem;
+			}
+			#clear-filters {
+				color: #004F71;
+				cursor: pointer;
+				font-size: 0.9rem;
+				margin: 0 0 1rem 1rem;
+			}
+			.selected-filter {
+				color: #fff;
+				background-color: #004F71;
+				border: 1px solid #004F71;
+			}
+		}
+	}
+
+}

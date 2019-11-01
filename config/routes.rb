@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   namespace :dashboard do
     get '/', to: 'welcome#index'
     resources :events, only: %i[show index] do
+      collection do
+        get 'filter_events', as: :filter
+      end
       resources :comments
       resources :volunteer_hours
     end

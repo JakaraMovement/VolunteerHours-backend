@@ -1,4 +1,4 @@
-.grid-x.grid-margin-x.event-container
+.grid-x.grid-margin-x.grid-margin-y.event-container
 	- @events.each do |event|
 		.cell.large-3.medium-6.event-wrapper
 			= link_to dashboard_event_path(event) do
@@ -7,3 +7,4 @@
 					%h2.event-name= event.name
 					%p.event-region= event.region.name
 					%p.help-text.event-date= format_date(event.start_time)
+					%p.help-text.event-time= format_time(event.start_time)

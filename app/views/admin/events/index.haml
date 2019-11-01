@@ -21,11 +21,11 @@
           %td
             = image_tag event_image_or_default_url(event), class: 'thumbnail'
           %td
-            = event.location
+            = event.description
           %td
-            = format_date(event.start_time)
+            = event.start_time&.strftime("%m/%d/%y")
           %td
-            = format_date(event.end_time)
+            = event.end_time&.strftime("%m/%d/%y")
           %td
             = event.region.name
           %td

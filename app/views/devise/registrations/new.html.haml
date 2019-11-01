@@ -40,15 +40,9 @@
                       Password is a required field.
                 .cell
                   %label
-                    Password confirmation
-                    = f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password Confirmation", required: '', "data-equalto" => "password"
-                    %span.form-error
-                      Password is a required field.
-                .cell
-                  %label
                     Birthday
                     .birthday-wrapper
-                      = f.date_select :birthday, {start_year: Date.today.year - 90, end_year: Date.today.year - 12, :order => [:month, :day, :year], default: {year: '1995'}, prompt: {day: 'Select day', month: 'Select month', year: 'Select year'}}, {required: true}
+                      = f.date_select :birthday, {start_year: 1980, end_year: Date.today.year - 12, :order => [:month, :day, :year], default: {year: '1995'}, prompt: {day: 'Select day', month: 'Select month', year: 'Select year'}}, {required: true}
                     %span.form-error
                       Birthday is a required field.
                 .cell

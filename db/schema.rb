@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 2019_09_14_225243) do
 
   create_table "events", force: :cascade do |t|
     t.string "name"
-    t.text "criteria"
-    t.string "location"
+    t.text "description"
+    t.string "venue"
     t.datetime "start_time"
     t.datetime "end_time"
     t.integer "max_limit"

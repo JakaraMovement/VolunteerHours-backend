@@ -7,5 +7,10 @@ class Event < ApplicationRecord
 
   has_one_attached :event_image
 
+  validates :name, presence: true
+  validates :venue, presence: true
   validates :max_limit, presence: true
+  validates :description, presence: true
+  validates :start_time, presence: true
+  validates :end_time, presence: true
 end

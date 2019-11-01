@@ -2,14 +2,14 @@
 	.cell.large-6.medium-6
 		= simple_form_for [:admin, @event] do |f|
 			= f.input :name
-			= f.input :criteria, input_html: {rows: '4'}
+			= f.input :description, input_html: {rows: '4'}
 			= f.input :max_limit
 			= f.input :region_id, as: :select, collection: Region.all, selected: @event.region.present? ? @event.region.id : nil
-			= f.input :location
+			= f.input :venue
 			= f.label 'Start time'
-			= f.input :start_time, as: :datetime, label: false
+			= f.input :start_time, as: :datetime, label: false, default: Date.today
 			= f.label 'End time'
-			= f.input :end_time, as: :datetime, label: false
+			= f.input :end_time, as: :datetime, label: false, default: Date.today
 			- if @event.event_image.attached?
 				= image_tag @event.event_image, class: 'thumbnail form-thumbnail'
 				= f.label 'Update image'

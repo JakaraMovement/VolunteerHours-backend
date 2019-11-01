@@ -65,15 +65,19 @@ regions.each {|region| Region.create(name: region)}
 Event.create([
 	{
 		name: 'Sikholars',
-		criteria: 'Criteria1',
-		location: 'Robobank Arena',
+		description: 'Description 1',
+		venue: 'Robobank Arena',
+		start_time: Time.now + 12.hours,
+		end_time: Time.now + 14.hours,
 		max_limit: 2,
 		region_id: Region.first.id
 	},
 	{
 		name: 'Misl Bay - Art Show',
-		criteria: 'Criteria2',
-		location: '1188 Murphy Ave San Jose, CA 95131',
+		description: 'Description 2',
+		venue: '1188 Murphy Ave San Jose, CA 95131',
+		start_time: Time.now + 14.hours,
+		end_time: Time.now + 16.hours,
 		max_limit: 4,
 		region_id: Region.last.id
 	}

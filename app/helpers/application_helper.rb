@@ -3,6 +3,6 @@ module ApplicationHelper
 		date&.strftime("%B %d, %Y")
 	end
 	def format_time(date)
-		date&.strftime("%I:%M %P")
+		date&.strftime("%l:%M %P")
 	end
 end
