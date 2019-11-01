@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'jquery-rails'
 gem 'dotenv-rails'
-gem 'aws-sdk-s3', require: false
+gem 'aws-sdk-s3', '~> 1.53.0', require: false
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
