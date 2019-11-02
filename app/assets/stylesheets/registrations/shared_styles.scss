@@ -1,3 +1,5 @@
+@import 'foundation_and_overrides';
+
 .page-container {
 	.page-wrapper.reg-wrapper {
 		padding: 150px 0 1.5rem;
@@ -14,6 +16,10 @@
 				select#user_birthday_2i,
 				select#user_birthday_3i {
 					margin-right: 2rem;
+
+					@include breakpoint(small down) {
+						margin-right: 0.5rem;
+					}
 				}
 			}
 		}
