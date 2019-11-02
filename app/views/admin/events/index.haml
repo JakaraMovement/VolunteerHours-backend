@@ -6,9 +6,9 @@
         %th ID
         %th Name
         %th Image
-        %th Location
+        %th Venue
         %th Start Time
-        %th End Time
+        %th.show-for-medium End Time
         %th Region
         %th Actions
     %tbody
@@ -24,7 +24,7 @@
             = event.description
           %td
             = event.start_time&.strftime("%m/%d/%y")
-          %td
+          %td.show-for-medium
             = event.end_time&.strftime("%m/%d/%y")
           %td
             = event.region.name

@@ -1,6 +1,6 @@
 .page-container
 	.page-wrapper
-		%h1{style:'font-size:2rem'}
+		%h1.dashboard-page-title
 			= "Welcome to your dashboard, #{current_user.first_name}!"
 		%p
 			= "Total hours volunteered: #{@total_hours_volunteered}"

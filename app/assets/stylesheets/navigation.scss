@@ -1,18 +1,19 @@
 @import 'foundation_and_overrides';
 
-.navigation {
+.navigation.top-bar {
 	background-color: #fff;
 	border-bottom: 1px solid #ddd;
 	position: fixed;
 	width: 100%;
 	opacity: 0.95;
 	z-index: 1;
+	padding: 0.5rem 0;
 
 	.nav-page-wrapper {
 		@include breakpoint(1232px) {
 			width: 1200px;
-			margin: 0.25rem auto;
 		}
+		margin: 0.25rem auto;
 	}
 	.navigation-wrapper {
 		display: flex;
@@ -22,6 +23,11 @@
 			margin-right: 0.5rem;
 			border: 1px solid #fff;
 			transition: 0.5s all;
+
+			@include breakpoint(small down) {
+				margin-right: 0;
+				margin-left: 0;
+			}
 
 			&:hover {
 				border: 1px solid #D9E1E2;
@@ -50,7 +56,26 @@
 			}
 		}
 		.nav-item {
-			margin-left: 1rem;
+			position: relative;
+			margin-left: 0.5rem;
+
+			.pointer {
+				position: absolute;
+				top: 48px;
+				width: 15px;
+				height: 15px;
+				right: 33px;
+				border: 1px solid #dadada;
+				border-bottom: 0;
+				border-right: 0;
+				z-index: 2;
+				transform: rotate(45deg);
+				background-color: #fafafa;
+
+				@include breakpoint(small down) {
+					top: 43px;
+				}
+			}
 		}
 	}
 	
@@ -76,6 +101,10 @@
 		}
 		#jakara-logo {
 			width: 100px;
+
+			@include breakpoint(small down) {
+				width: 80px;
+			}
 		}
 		#bulldog-logo {
 			width: 120px;

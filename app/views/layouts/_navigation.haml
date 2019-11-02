@@ -7,14 +7,15 @@
 						- if user_signed_in?
 							%li#logo
 								= link_to dashboard_path, id: 'logo-link' do
-									= image_tag 'humanics-fresno-state-logo.png', id: 'bulldog-logo'
+									= image_tag 'humanics-fresno-state-logo.png', id: 'bulldog-logo', class: 'show-for-medium'
 									= image_tag 'jakara-logo.png', id: 'jakara-logo'
 							%li.nav-item
 								= link_to 'Events', dashboard_events_path
+								%section{class: ('pointer' if params[:controller].split('/').last&.eql?('events'))}
 						- else
 							%li#logo
 								= link_to root_path, id: 'logo-link' do
-									= image_tag 'humanics-fresno-state-logo.png', id: 'bulldog-logo'
+									= image_tag 'humanics-fresno-state-logo.png', id: 'bulldog-logo', class: 'show-for-medium'
 									= image_tag 'jakara-logo.png', id: 'jakara-logo'
 					%ul.dropdown.menu{"data-dropdown-menu" => ""}
 						- if user_signed_in?

@@ -1,0 +1,10 @@
+@import 'foundation_and_overrides';
+
+.dashboard-page-title {
+	font-size: 2rem;
+
+	@include breakpoint(small down) {
+		font-size: 1.125rem;
+		font-weight: 500;
+	}
+}

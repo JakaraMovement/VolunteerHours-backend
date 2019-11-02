@@ -6,16 +6,46 @@
 	padding: 0.5rem 1rem 0;
 	box-shadow: 0px 1px 7px -5px rgba(134, 134, 134, 0.7);
 
+	@include breakpoint(small down) {
+		padding-top: 0;
+		margin-bottom: 0.75rem;
+	}
+
 	#filter-by-wrapper {
 		@include breakpoint(1232px) {
 			width: 1200px;
 			margin: 0 auto;
 		}
-		h2.filter-by-text {
+		#filter-by-text-wrapper {
+			@include breakpoint(374px down) {
+				display: flex;
+				justify-content: space-between;
+				max-width: 288px;
+			}
+			h2.filter-by-text {
+				color: #004F71;
+				font-size: 0.9rem;
+				font-weight: 500;
+				text-transform: uppercase;
+			}
+			.show-for-smaller-screens {
+				display: none;
+
+				@include breakpoint(374px down) {
+					display: block;
+					margin: 0 0.25rem;
+				}
+			}
+		}
+		#clear-filters {
 			color: #004F71;
+			cursor: pointer;
 			font-size: 0.9rem;
-			font-weight: 500;
-			text-transform: uppercase;
+			margin: 0 0 1rem 1rem;
+
+			@include breakpoint(374px down) {
+				display: none;
+			}
 		}
 		#filter-options-wrapper {
 			display: flex;
@@ -25,6 +55,10 @@
 				form {
 					width: 200px;
 					max-width: 100%;
+
+					@include breakpoint(small down) {
+						width: 110px;
+					}
 
 					select {
 						&.selected-region,
@@ -43,6 +77,10 @@
 				padding: 0.407rem 0.75rem;
 				border: 1px solid #cacaca;
 
+				@include breakpoint(small down) {
+					margin: 0 0.5rem 1rem;
+				}
+
 				&:hover {
 					border: 1px solid #004F71;
 				}
@@ -50,12 +88,6 @@
 			#upcoming-events {
 				margin: 0 0 1rem 0;
 				padding: 0.407rem 0.75rem;
-			}
-			#clear-filters {
-				color: #004F71;
-				cursor: pointer;
-				font-size: 0.9rem;
-				margin: 0 0 1rem 1rem;
 			}
 			.selected-filter {
 				color: #fff;

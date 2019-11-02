@@ -1,4 +1,9 @@
-%h2.filter-by-text Filter by:
+#filter-by-text-wrapper
+	%h2.filter-by-text Filter by:
+	= form_with url: filter_dashboard_events_path, method: :get do |f|
+		= hidden_field_tag :clear_filters, true
+		#clear-filters.show-for-smaller-screens{onclick: "$(this).closest('form').submit()"}
+			Clear	
 #filter-options-wrapper
 	#regions-wrapper
 		= form_with url: filter_dashboard_events_path, method: :get do |f|
@@ -6,15 +11,21 @@
 	#past-events-wrapper
 		= form_with url: filter_dashboard_events_path, method: :get do |f|
 			= hidden_field_tag :past_events, true
-			.event-type#past-events{onclick: "$(this).closest('form').submit()", class: ('selected-filter' if params[:past_events])}
+			.event-type#past-events.show-for-medium{onclick: "$(this).closest('form').submit()", class: ('selected-filter' if params[:past_events])}
 				Past Events
+			.event-type#past-events.show-for-small-only{onclick: "$(this).closest('form').submit()", class: ('selected-filter' if params[:past_events])}
+				Past
 	#upcoming-events-wrapper
 		= form_with url: filter_dashboard_events_path, method: :get do |f|
 			= hidden_field_tag :upcoming_events, true
-			.event-type#upcoming-events{onclick: "$(this).closest('form').submit()", class: ('selected-filter' if params[:upcoming_events])}
+			.event-type#upcoming-events.show-for-medium{onclick: "$(this).closest('form').submit()", class: ('selected-filter' if params[:upcoming_events])}
 				Upcoming Events
+			.event-type#upcoming-events.show-for-small-only{onclick: "$(this).closest('form').submit()", class: ('selected-filter' if params[:upcoming_events])}
+				Upcoming
 	#clear-filters-wrapper
 		= form_with url: filter_dashboard_events_path, method: :get do |f|
 			= hidden_field_tag :clear_filters, true
-			#clear-filters{onclick: "$(this).closest('form').submit()"}
+			#clear-filters.show-for-medium{onclick: "$(this).closest('form').submit()"}
 				Clear Filters
+			#clear-filters.show-for-small-only{onclick: "$(this).closest('form').submit()"}
+				Clear
