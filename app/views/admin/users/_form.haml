@@ -11,8 +11,6 @@
 			.row
 				= f.password_field :password, autocomplete: "off", placeholder: "Password", required: ''
 			.row
-				= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password Confirmation", required: ''
-			.row
 				= f.label :birthday
 				.birthday-wrapper
 					= f.input :birthday, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year - 12, :order => [:month, :day, :year], default: {year: '1995'}, label: false

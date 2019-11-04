@@ -6,14 +6,18 @@
           %ul.dropdown.menu{"data-dropdown-menu" => ""}
             / %li
             =# link_to 'Admin Home', admin_path, style: 'padding-left:0'
-            %li
+            %li.admin-nav-items
               = link_to 'Events', admin_events_path, style: 'padding-left:0'
-            %li
+              %section{class: ('pointer' if params[:controller].split('/').last&.eql?('events'))}
+            %li.admin-nav-items
               = link_to 'Volunteers', admin_users_path
-            %li
+              %section{class: ('pointer' if params[:controller].split('/').last&.eql?('users'))}
+            %li.admin-nav-items
               = link_to 'Review volunteer hours', admin_volunteer_requests_path
-            %li
+              %section{class: ('pointer' if params[:controller].split('/').last&.eql?('volunteer_requests'))}
+            %li.admin-nav-items
               = link_to 'Regions', admin_regions_path
+              %section{class: ('pointer' if params[:controller].split('/').last&.eql?('regions'))}
           %ul.dropdown.menu{"data-dropdown-menu" => ""}
             - if user_signed_in?
               %li.nav-item

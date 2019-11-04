@@ -58,23 +58,29 @@
 		.nav-item {
 			position: relative;
 			margin-left: 0.5rem;
+		}
+		.pointer {
+			position: absolute;
+			top: 48px;
+			width: 15px;
+			height: 15px;
+			right: 50%;
+			border: 1px solid #dadada;
+			border-bottom: 0;
+			border-right: 0;
+			z-index: 2;
+			transform: rotate(45deg);
+			background-color: #fafafa;
+
+			@include breakpoint(small down) {
+				top: 43px;
+			}
+		}
+		li.admin-nav-items {
+			position: relative;
 
 			.pointer {
-				position: absolute;
-				top: 48px;
-				width: 15px;
-				height: 15px;
-				right: 33px;
-				border: 1px solid #dadada;
-				border-bottom: 0;
-				border-right: 0;
-				z-index: 2;
-				transform: rotate(45deg);
-				background-color: #fafafa;
-
-				@include breakpoint(small down) {
-					top: 43px;
-				}
+				top: 43px;
 			}
 		}
 	}
