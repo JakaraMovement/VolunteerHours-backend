@@ -3,10 +3,6 @@
 .navigation.top-bar {
 	background-color: #fff;
 	border-bottom: 1px solid #ddd;
-	position: fixed;
-	width: 100%;
-	opacity: 0.95;
-	z-index: 1;
 	padding: 0.5rem 0;
 
 	.nav-page-wrapper {
@@ -64,7 +60,7 @@
 			top: 48px;
 			width: 15px;
 			height: 15px;
-			right: 50%;
+			right: calc(50% - 7.5px);
 			border: 1px solid #dadada;
 			border-bottom: 0;
 			border-right: 0;
@@ -74,6 +70,11 @@
 
 			@include breakpoint(small down) {
 				top: 43px;
+			}
+		}
+		li.admin-nav-items#events-nav {
+			.pointer {
+				right: calc(50% - 7.5px + 8px);
 			}
 		}
 		li.admin-nav-items {

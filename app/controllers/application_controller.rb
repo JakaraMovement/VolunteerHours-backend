@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
 	end
 
 	def after_sign_in_path_for(resource)
-		resource.admin? ? admin_events_path : dashboard_path
+		resource.admin? ? admin_events_path : filter_dashboard_events_path(upcoming_events: true)
 	end
 end

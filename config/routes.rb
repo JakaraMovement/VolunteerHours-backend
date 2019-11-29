@@ -24,19 +24,9 @@ Rails.application.routes.draw do
     end
     resources :regions
     resources :users
-    resources :volunteer_requests
-    resources :volunteer_request_accept_reject, only: :update
+    resources :volunteer_hours do
+      post 'update_hour', as: :update_hour
+      post 'update_status', as: :update_status
+    end
   end
-  # constraints(AdminSubdomain) do
-  #   namespace :admin do
-  #     get '/', to: 'welcome#index'
-  #     resources :events do
-  #       resources :comments, only: :index
-  #     end
-  #     resources :regions
-  #     resources :users
-  #     resources :volunteer_requests
-  #     resources :volunteer_request_accept_reject, only: :update
-  #   end
-  # end
 end

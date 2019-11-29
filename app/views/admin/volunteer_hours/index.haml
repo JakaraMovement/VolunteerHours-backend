@@ -1,0 +1,33 @@
+%table
+  %thead
+    %tr
+      %th ID
+      %th User
+      %th Event
+      %th Hours volunteered
+      %th Review Status
+  %tbody
+    - @volunteer_hours.each_with_index do |volunteer_hour, i|
+      %tr
+        %td
+          = volunteer_hour.id
+        %td
+          = "#{volunteer_hour.user.first_name} #{volunteer_hour.user.last_name}"
+        %td
+          = volunteer_hour.event.name
+        %td
+          .display-time-worked{id: "display-time-worked-#{i+1}"}
+            %span= volunteer_hour.time_worked
+            %span{class: 'edit-time-worked-txt', onclick: "$(\"#display-time-worked-#{i+1}\").hide();$(\"#edit-time-worked-form-#{i+1}\").css('display', 'flex');"} Edit
+          = form_with url: admin_volunteer_hour_update_hour_path(volunteer_hour), html: {id: "edit-time-worked-form-#{i+1}", class: 'edit-time-worked-form', onsubmit: "$(\"#display-time-worked-#{i+1}\").show();$(\"#edit-time-worked-form-#{i+1}\").hide()"} do |f|
+            = f.number_field :time_worked, value: volunteer_hour.time_worked
+            = f.submit 'Update'
+            %span= '|'
+            %span{class: 'cancel-time-worked', onclick: "$(\"#display-time-worked-#{i+1}\").show();$(\"#edit-time-worked-form-#{i+1}\").hide()"} Cancel
+        %td
+          - if volunteer_hour.status == 'requested'
+            = link_to 'Accept', admin_volunteer_hour_update_status_path(volunteer_hour, status: 'accepted'), method: :post
+            |
+            = link_to 'Reject', admin_volunteer_hour_update_status_path(volunteer_hour, status: 'rejected'), method: :post
+          - else
+            = volunteer_hour.status&.capitalize

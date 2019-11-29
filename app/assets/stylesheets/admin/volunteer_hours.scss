@@ -1,0 +1,38 @@
+.display-time-worked {
+	display: flex;
+	align-items: center;
+
+	.edit-time-worked-txt {
+		margin-left: 5rem;
+		color: #1779ba;
+		cursor: pointer;
+	}
+}
+.edit-time-worked-form {
+	display: none;
+	align-items: center;
+
+	input[type='number'] {
+		width: 100px;
+		max-width: 100%;
+	}
+	input[type='submit'] {
+		margin: 0 0 1rem;
+		border: none;
+		margin-left: 0.5rem;
+		cursor: pointer;
+		color: #1779ba;
+		background-color: transparent;
+	}
+	span {
+		margin-bottom: 1rem;
+		color: #696969;
+
+		&:last-child {
+			padding-left: 7px;
+		}
+	}
+	.cancel-time-worked {
+		cursor: pointer;
+	}
+}
