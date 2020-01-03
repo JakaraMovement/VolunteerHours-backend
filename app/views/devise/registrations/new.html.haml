@@ -42,7 +42,7 @@
                   %label
                     Birthday
                     .birthday-wrapper
-                      = f.date_select :birthday, {start_year: 1980, end_year: Date.today.year - 12, :order => [:month, :day, :year], default: {year: '1995'}, prompt: true}, {required: true, style: '-webkit-appearance: none;'}
+                      = f.date_select :birthday, {start_year: 1980, end_year: Date.today.year - 12, :order => [:month, :day, :year], default: {year: '1995'}, prompt: {month: 'Select month', day: 'Select day', year: 'Select year'}}
                     %span.form-error
                       Birthday is a required field.
                 .cell
