@@ -6,7 +6,7 @@
 
 	@include breakpoint(small down) {
 		padding-top: 0;
-		margin-bottom: 0.75rem;
+		margin: 0.75rem 0;
 	}
 
 	#filter-by-wrapper {

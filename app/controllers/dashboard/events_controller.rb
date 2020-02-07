@@ -25,7 +25,7 @@ class Dashboard::EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @event_volunteer_hour = @event.volunteer_hours.first
+    @event_volunteer_hour = @event.volunteer_hours.where(user_id: current_user&.id).first
     @comment = Comment.new
     @volunteer_hour = VolunteerHour.new
   end

@@ -54,6 +54,17 @@
 				}
 			}
 		}
+	}
+	p.event-description {
+		width: 800px;
+		max-width: 100%;
+	}
+	#hours-worked-wrapper {
+		display: flex;
+		align-items: center;
 
+		span {
+			height: 39px;
+		}
 	}
 }

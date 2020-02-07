@@ -30,9 +30,6 @@ body {
 			width: 1200px;
 			margin: 0 auto;
 		}
-		@include breakpoint(small down) {
-			padding: 5rem 0 1.5rem;
-		}
 	}
 	h1.page-title {
 		margin: 0;

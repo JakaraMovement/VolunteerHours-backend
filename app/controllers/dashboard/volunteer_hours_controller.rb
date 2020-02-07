@@ -1,7 +1,8 @@
 class Dashboard::VolunteerHoursController < ApplicationController
   def create
     event = Event.find(params[:event_id])
-    current_user.volunteer_hours.create(volunteer_hour_params.merge(event_id: event.id, status: 'requested'))
+    time_worked = calc_time(params[:hours_worked],params[:minutes_worked])
+    current_user.volunteer_hours.create(time_worked: time_worked, event_id: event.id, status: 'requested')
     redirect_to dashboard_event_path(event)
   end
 
@@ -9,9 +10,7 @@ class Dashboard::VolunteerHoursController < ApplicationController
     @volunteer_hour = VolunteerHour.new
   end
 
-  private
-
-  def volunteer_hour_params
-    params.require(:volunteer_hour).permit(:time_worked)
+  def calc_time(hours, minutes)
+    (hours.to_f + minutes.to_f/60).truncate(2)
   end
 end

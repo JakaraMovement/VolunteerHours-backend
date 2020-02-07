@@ -21,7 +21,7 @@
           %td
             = image_tag event_image_or_default_url(event), class: 'thumbnail'
           %td
-            = event.description
+            = truncate(event.description)
           %td
             = event.start_time&.strftime("%m/%d/%y")
           %td.show-for-medium

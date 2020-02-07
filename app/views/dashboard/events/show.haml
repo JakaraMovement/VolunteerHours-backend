@@ -13,39 +13,51 @@
       .cell
         %p.helper-text
           = @event.region.name
-      .cell.large-8.medium-8
-        - if @event_volunteer_hour.present?
-          %table
-            %thead
-              %tr
-                %th
-                  Time worked
-                %th
-                  Submitted at
-                %th
-                  Status
-            %tbody
-              %tr
-                %td
-                  = @event_volunteer_hour.time_worked
-                  hrs
-                %td
-                  = @event_volunteer_hour.created_at
-                %td
-                  - if @event_volunteer_hour.status.eql?('accepted')
-                    Approved
-                    %i.fa.fa-check{style: 'color: green'}
-                  - elsif @event_volunteer_hour.status.eql?('rejected')
-                    Rejected
-                  - else
-                    Pending Review
+      .cell
+        %p.event-description
+          = @event.description
+      - if Time.zone.now > @event.end_time
+        .cell.large-8.medium-8
+          - if @event_volunteer_hour.present?
+            %h4 Hours submitted
+            %table
+              %thead
+                %tr
+                  %th
+                    Time worked
+                  %th
+                    Submitted at
+                  %th
+                    Status
+              %tbody
+                %tr
+                  %td
+                    = @event_volunteer_hour.time_worked
+                    hrs
+                  %td
+                    = @event_volunteer_hour.created_at
+                  %td
+                    - if @event_volunteer_hour.status.eql?('accepted')
+                      Approved
+                      %i.fa.fa-check{style: 'color: green'}
+                    - elsif @event_volunteer_hour.status.eql?('rejected')
+                      Rejected
+                    - else
+                      Pending Review
 
-        - else
-          .cell
-            = form_for [ :dashboard, @event, @volunteer_hour ] do |f|
-              = f.number_field :time_worked, placeholder: '# of hours worked'
-              %p.help-text= "max limit: #{@event.max_limit} hrs"
-              = f.submit 'Submit', class: 'button'    
+          - else
+            %h4 Submit hours
+            .cell
+              = form_for [:dashboard, @event, @volunteer_hour] do |f|
+                = f.label 'Time worked:'
+                .grid-x.grid-margin-x#hours-worked-wrapper
+                  .cell.large-3.medium-3.small-4
+                    = select_tag 'hours_worked', options_for_select(1..@event.max_limit), prompt: 'Hours', onchange: "if ($(this).val() == #{@event.max_limit}) {$('#minutes-worked').attr('disabled',true);$('#minutes-worked')[0].selectedIndex = 0;} else {$('#minutes-worked').attr('disabled',false)}", required: ''
+                  %span>:
+                  .cell.large-3.medium-3.small-4
+                    = select_tag 'minutes_worked', options_for_select(1..59), prompt: 'Minutes', id: 'minutes-worked'
+                %p.help-text= "max limit: #{@event.max_limit} hrs"
+                = f.submit 'Submit', class: 'button'    
       .cell
         %h4
           Comments
@@ -61,6 +73,6 @@
           /     %img{src: url_for(i), width: '200'}
       .cell.large-8.medium-8
         = simple_form_for [ :dashboard, @event, @comment ] do |f|
-          = f.input :text, :input_html => {rows: 4}, label: 'Comment ( optional )', class: 'helper-text'
+          = f.input :text, label: 'Comment ( optional )', class: 'helper-text', input_html: {rows: 4, oninput: "if ($(this).val().length) {$('#submit-comment-btn').attr('disabled',false)} else {$('#submit-comment-btn').attr('disabled',true)}"}
           =# f.file_field :image, multiple: true
-          = f.submit 'Submit', class: 'button'
+          = f.submit 'Submit', class: 'button', id: 'submit-comment-btn', disabled: ''
