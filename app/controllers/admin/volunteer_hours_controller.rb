@@ -8,7 +8,11 @@ class Admin::VolunteerHoursController < AdminController
   end
 
   def update_hour
-  	@volunteer_hour.update(time_worked: params['time_worked'].to_i)
+    if params[:status].eql?('rejected')
+      @volunteer_hour.update_attributes(status: 'accepted', time_worked: params['time_worked'].to_f)
+    else
+    	@volunteer_hour.update_attributes(time_worked: params['time_worked'].to_f)
+    end
   	redirect_to admin_volunteer_hours_path
   end
 
