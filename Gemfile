@@ -46,6 +46,9 @@ gem 'aws-sdk-s3', '~> 1.53.0', require: false
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# pagination
+gem 'pagy', '~> 3.7.2'
+
 group :development, :test do
   gem 'pry-byebug', '~> 3.7.0'
   gem 'rspec-rails', '~> 3.8'

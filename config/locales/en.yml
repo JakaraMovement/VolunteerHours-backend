@@ -31,3 +31,14 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    models:
+      event: 'event'
+      events: 'events'
+      past_events: 'past events'
+      upcoming_events: 'upcoming events'
+  pagy:
+    info:
+      no_items: "No %{item_name} found"
+      single_page: "Displaying %{count} <b>%{item_name}</b>"
+      multiple_pages: "Displaying %{from}-%{to} of %{count} <b>%{item_name}</b>"

@@ -5,12 +5,10 @@
 .page-container
 	.page-wrapper
 		.grid-x.events
-			- if @events.empty? && params[:region_id].present?
-				.cell
-					%p.helper-text
-						= "No events found in #{selected_region}."
-			- elsif params[:region_id].present?
-				.cell
-					%h5#events-in-label= "Events in #{selected_region}"
+			.cell.pagination-wrapper
+				.pagination-info
+					= pagy_info(@pagy).html_safe
+					%span= "in #{selected_region}" if params[:region_id].present?
+				= pagy_foundation_nav(@pagy).html_safe if @pagy.pages > 1
 			.cell
 				= render partial: 'dashboard/events/event'
