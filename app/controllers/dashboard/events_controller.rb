@@ -3,18 +3,27 @@ class Dashboard::EventsController < ApplicationController
   include Pagy::Backend
 
   def index
+    @page_title = 'All Events'
     @pagy, @events = pagy(Event.order(start_time: :desc))
   end
 
   def filter_events
     region_id = params[:region_id]
     if region_id.present?
+      @page_title = "Events in #{Region.find(region_id).name}"
       @pagy, @events = pagy(Event.where(region_id: region_id).order(start_time: :desc))
     elsif params[:past_events]
+      @page_title = 'Past Events'
       @pagy, @events = pagy(Event.where('end_time < ?', Time.now).order(start_time: :desc))
     elsif params[:upcoming_events]
+      @page_title = 'Upcoming Events'
       @pagy, @events = pagy(Event.where('end_time >= ?', Time.now).order(:start_time))
+    elsif params[:my_events]
+      @page_title = 'My Events'
+      user_event_ids = current_user.volunteer_hours.pluck(:event_id)
+      @pagy, @events = pagy(Event.where(id: user_event_ids).order(start_time: :desc))
     else
+      @page_title = 'All Events'
       @pagy, @events = pagy(Event.order(start_time: :desc))
     end
 
@@ -29,6 +38,7 @@ class Dashboard::EventsController < ApplicationController
     @event_volunteer_hour = @event.volunteer_hours.where(user_id: current_user&.id).first
     @comment = Comment.new
     @volunteer_hour = VolunteerHour.new
+    @page_title = "#{@event.name} in #{@event.region.name}"
   end
 
   private
@@ -48,7 +58,7 @@ class Dashboard::EventsController < ApplicationController
     {
       count: collection.count,
       page: params['page'],
-      items: vars[:items] || 8,
+      items: vars[:items] || 12,
       i18n_key: item_name
     }
   end

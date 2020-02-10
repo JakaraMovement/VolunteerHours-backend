@@ -37,8 +37,11 @@ en:
       events: 'events'
       past_events: 'past events'
       upcoming_events: 'upcoming events'
+      users: 'volunteers'
+      volunteer_hours: 'volunteer hours'
+      regions: 'regions'
   pagy:
     info:
       no_items: "No %{item_name} found"
-      single_page: "Displaying %{count} <b>%{item_name}</b>"
-      multiple_pages: "Displaying %{from}-%{to} of %{count} <b>%{item_name}</b>"
+      single_page: "Displaying %{count} %{item_name}"
+      multiple_pages: "Displaying %{from}-%{to} of %{count} %{item_name}"

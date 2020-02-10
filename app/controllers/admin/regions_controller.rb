@@ -3,7 +3,7 @@
 class Admin::RegionsController < AdminController
   before_action :load_region, except: %i[index create new]
   def index
-    @regions = Region.all
+    @pagy, @regions = pagy(Region.order("#{sort_column} #{sort_direction}"))
   end
 
   def create

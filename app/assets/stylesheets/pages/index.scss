@@ -1,13 +1,12 @@
 @import 'foundation_and_overrides';
 
 section#home-page {
-	height: calc(100vH - 40px);
+	height: calc(100vH - 72.78px);
 	background: image-url('home-bg.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: top;
 	position: relative;
-	top: 40px;
 
 	@include breakpoint(small down) {
 		background-position: 65% 0;

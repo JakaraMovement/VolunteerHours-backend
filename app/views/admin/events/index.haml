@@ -4,12 +4,12 @@
     %thead
       %tr
         %th ID
-        %th Name
+        %th= sortable('events.name', 'Name')
         %th Image
         %th Description
-        %th Start Time
-        %th.show-for-medium End Time
-        %th Region
+        %th= sortable('start_time')
+        %th.show-for-medium= sortable('end_time')
+        %th= sortable('regions.name', 'Region')
         %th Actions
     %tbody
       - @events.each do |event|
@@ -34,3 +34,7 @@
             =link_to 'Delete', admin_event_path(event), class: 'delete-action', data: { confirm: 'Are you sure?', method: :delete }
             |
             =link_to 'Show Comments', admin_event_comments_path(event), class: 'edit-action'
+  .cell.pagination-wrapper.admin
+    .pagination-info
+      = pagy_info(@pagy).html_safe
+    = pagy_foundation_nav(@pagy).html_safe if @pagy.pages > 1

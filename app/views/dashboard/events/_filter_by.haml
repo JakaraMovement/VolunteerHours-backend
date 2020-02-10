@@ -22,6 +22,11 @@
 				Upcoming Events
 			.event-type#upcoming-events.show-for-small-only{onclick: "$(this).closest('form').submit()", class: ('selected-filter' if params[:upcoming_events])}
 				Upcoming
+	#my-events-wrapper
+		= form_with url: filter_dashboard_events_path, method: :get do |f|
+			= hidden_field_tag :my_events, true
+			.event-type#my-events.show-for-medium{onclick: "$(this).closest('form').submit()", class: ('selected-filter' if params[:my_events])}
+				My Events
 	#clear-filters-wrapper
 		= form_with url: filter_dashboard_events_path, method: :get do |f|
 			= hidden_field_tag :clear_filters, true

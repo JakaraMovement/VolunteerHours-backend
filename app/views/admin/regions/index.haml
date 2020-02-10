@@ -3,7 +3,7 @@
   %thead
     %tr
       %th ID
-      %th Name
+      %th= sortable('name')
       %th Actions
   %tbody
     - @regions.each do |region|
@@ -16,3 +16,8 @@
           =link_to 'Edit', edit_admin_region_path(region), class: 'edit-action'
           |
           =link_to 'Delete', admin_region_path(region), class: 'delete-action', data: { confirm: 'Are you sure?', method: :delete }
+
+.cell.pagination-wrapper.admin
+  .pagination-info
+    = pagy_info(@pagy).html_safe
+  = pagy_foundation_nav(@pagy).html_safe if @pagy.pages > 1

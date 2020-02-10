@@ -2,10 +2,10 @@
   %thead
     %tr
       %th ID
-      %th User
-      %th Event
-      %th Hours volunteered
-      %th Review Status
+      %th= sortable('users.first_name, users.last_name','Volunteer')
+      %th= sortable('events.name','Event')
+      %th= sortable('time_worked')
+      %th= sortable('status','Review Status')
   %tbody
     - @volunteer_hours.each_with_index do |volunteer_hour, i|
       %tr
@@ -32,3 +32,8 @@
             = link_to 'Reject', admin_volunteer_hour_update_status_path(volunteer_hour, status: 'rejected'), method: :post, data: {confirm: "Are you sure you'd like to reject #{volunteer_hour.user.first_name}'s hours #{volunteer_hour.user.gender.eql?('Male') ? 'he' : 'she'} submitted for #{volunteer_hour.event.name}?"}
           - else
             = volunteer_hour.status&.capitalize
+
+.cell.pagination-wrapper.admin
+  .pagination-info
+    = pagy_info(@pagy).html_safe
+  = pagy_foundation_nav(@pagy).html_safe if @pagy.pages > 1

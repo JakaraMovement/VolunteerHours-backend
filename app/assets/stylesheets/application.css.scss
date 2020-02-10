@@ -13,18 +13,19 @@
  *= require_self
  *= require_tree .
  *= require font-awesome
- */
+*/
 
- @import 'foundation_and_overrides';
+@import 'foundation_and_overrides';
+@import 'custom_fonts';
 
- body {
- 	background-color: #fafafa !important;
- }
+body {
+	background-color: #fafafa !important;
+}
 
 // custom pagination styling
 .pagination {
 	margin-bottom: 0 !important;
-	
+
 	li {
 		border: 1px solid #fafafa;
 		transition: 0.5s all;
@@ -42,10 +43,17 @@
 	text-align: center;
 	margin-top: -0.5rem;
 	margin-bottom: 1.5rem;
+
+	.pagination-info {
+		// font-family: 'Montserrat-Regular';
+	}
 	
 	.pagy-foundation-nav {
 		margin: 0.35rem 0 0;
 	}
+}
+.pagination-wrapper.admin {
+	margin: 0;
 }
 
 .page-container {

@@ -2,24 +2,19 @@
   %thead
     %tr
       %th ID
-      %th Name
-      %th email
+      %th= sortable('users.first_name, users.last_name','name')
+      %th= sortable('email')
       %th Phone #
-      %th is_admin?
+      %th= sortable('admin')
       %th Actions
   %tbody
     - @users.each do |volunteer|
       %tr
-        %td
-          = volunteer.id
-        %td
-          = "#{volunteer.first_name} #{volunteer.last_name}"
-        %td
-          = volunteer.email
-        %td
-          = volunteer.phone
-        %td
-          = volunteer.admin?
+        %td= volunteer.id
+        %td= "#{volunteer.first_name} #{volunteer.last_name}"
+        %td= volunteer.email
+        %td= volunteer.phone
+        %td= volunteer.admin?
         %td
           - if current_user.eql?(volunteer)
             = link_to 'Edit', edit_admin_user_path(volunteer)
@@ -27,3 +22,8 @@
             =link_to 'Delete', admin_user_path(volunteer), class: 'delete-action', data: { confirm: 'Are you sure?', method: :delete }
           - else
             =link_to 'Delete', admin_user_path(volunteer), class: 'delete-action', data: { confirm: 'Are you sure?', method: :delete }
+
+.cell.pagination-wrapper.admin
+  .pagination-info
+    = pagy_info(@pagy).html_safe
+  = pagy_foundation_nav(@pagy).html_safe if @pagy.pages > 1

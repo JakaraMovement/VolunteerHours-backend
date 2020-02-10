@@ -4,7 +4,13 @@ class Admin::VolunteerHoursController < AdminController
 	before_action :load_volunteer_hour, only: [:update_hour, :update_status]
   def index
     @volunteer_hour = VolunteerHour.new
-    @volunteer_hours = VolunteerHour.all
+    @pagy, @volunteer_hours = pagy(
+      VolunteerHour.includes(:event)
+                   .includes(:user)
+                   .order(sort_by_multiple_columns)
+                   .references(:event)
+                   .references(:user)
+    )
   end
 
   def update_hour

@@ -5,9 +5,8 @@
     %meta{:charset => "utf-8"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     %meta{:content => "no-cache", :name => "turbolinks-cache-control"}/
-    %title= content_for?(:title) ? yield(:title) : "Untitled"
+    %title= @page_title.present? ? "#{@page_title} | Jakara" : "Volunteer Management App | Jakara"
     = stylesheet_link_tag    "application"
-    =# stylesheet_link_tag    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/fontawesome.css"
     = javascript_include_tag "application", 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body

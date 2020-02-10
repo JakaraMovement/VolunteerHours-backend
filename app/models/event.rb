@@ -1,6 +1,8 @@
 class Event < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :volunteer_hours, dependent: :destroy
+  has_many :user_events
+  has_many :users, through: :user_events
   belongs_to :region
 
   has_one_attached :event_image
