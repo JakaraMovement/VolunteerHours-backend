@@ -21,6 +21,8 @@
           %ul.dropdown.menu{"data-dropdown-menu" => ""}
             - if user_signed_in?
               %li.nav-item
+                = link_to 'My Profile', user_path(current_user), class: 'nav-link'
+              %li.nav-item
                 = link_to destroy_user_session_path, method: :delete, class: 'nav-link', style:'padding-right:0;' do
                   %span
                     Logout

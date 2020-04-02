@@ -35,4 +35,12 @@ class User < ApplicationRecord
   def name
     "#{first_name} #{last_name}"
   end
+
+  def parent_name
+    "#{parent_first_name} #{parent_last_name}"
+  end
+
+  def volunteer
+    gender.eql?('Female') ? 'Sevadarni' : 'Sevadar'
+  end
 end

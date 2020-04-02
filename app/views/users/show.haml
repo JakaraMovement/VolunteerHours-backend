@@ -1,0 +1,65 @@
+.page-container#user-profile
+	.page-wrapper
+		.grid-x.grid-margin-x
+			.cell.large-3.medium-3
+				= image_tag 'user-placeholder.png', id: 'avatar'
+			.cell.large-9.medium-9
+				%h1#name= @user.name
+				%h2#work= @user.volunteer
+				#about-container
+					%i.fa.fa-user-circle-o
+					About
+				%ul.tabs#user-info-tabs{'data-tabs' => '', 'data-deep-link' => 'true', 'data-update-history' => 'true'}
+					%li.tabs-title.is-active
+						%a{'aria-selected' => 'true', href: '#contact-info'} contact
+					%li.tabs-title
+						%a{href: '#parent-info'} parent
+					%li.tabs-title
+						%a{href: '#other-info'} other
+				.tabs-content{'data-tabs-content' => 'user-info-tabs'}
+					#contact-info.tabs-panel.is-active
+						%h3.section-heading contact information
+						.user-info#phone
+							%p.user-info-title phone:
+							%p.user-info-val= format_phone_num(@user.phone)
+						.user-info#address
+							%p.user-info-title address:
+							#address-wrapper
+								%p.user-info-val#user-address= @user.address
+								%p.user-info-val= "#{@user.city}, #{@user.state} #{@user.zip_code}"
+						.user-info#email
+							%p.user-info-title email:
+							%p.user-info-val= mail_to(@user.email)
+					#parent-info.tabs-panel
+						%h3.section-heading parent information
+						.user-info#parent-name
+							%p.user-info-title Name:
+							%p.user-info-val= @user.parent_name
+						.user-info#parent-contact
+							%p.user-info-title Phone:
+							%p.user-info-val= format_phone_num(@user.parent_phone)
+						.user-info#parent-email
+							%p.user-info-title Email:
+							%p.user-info-val= mail_to(@user.parent_email)
+					#other-info.tabs-panel
+						%h3.section-heading other information
+						.user-info#birthday
+							%p.user-info-title birthday:
+							%p.user-info-val= @user.birthday.strftime('%B %d, %Y')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

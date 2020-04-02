@@ -8,6 +8,10 @@
 							%li#logo
 								= link_to dashboard_path, id: 'logo-link' do
 									= image_tag 'jakara-logo.png', id: 'jakara-logo'
+							- if is_admin?
+								%li.nav-item
+									= link_to 'Admin', admin_events_path
+									%section{class: ('pointer' if params[:controller].split('/').last&.eql?('events'))}
 							%li.nav-item
 								= link_to 'Events', dashboard_events_path
 								%section{class: ('pointer' if params[:controller].split('/').last&.eql?('events'))}
@@ -17,6 +21,8 @@
 									= image_tag 'jakara-logo.png', id: 'jakara-logo'
 					%ul.dropdown.menu{"data-dropdown-menu" => ""}
 						- if user_signed_in?
+							%li.nav-item
+								= link_to 'My Profile', user_path(current_user), class: 'nav-link'
 							%li.nav-item
 								= link_to destroy_user_session_path, method: :delete, class: 'nav-link', id: 'logout' do
 									%em.icon-notebook

@@ -1,6 +1,7 @@
 .cell
-  %i.fa.fa-chevron-left{style:'color:#7CA5C2;margin-right:0.5rem;'}
-  = link_to 'Back to Events', admin_events_path
+  = link_to admin_events_path do
+    %i.fa.fa-chevron-left{style:'color:#7CA5C2;margin-right:0.5rem;'}
+    Back to Events
   %br
   %br
 %table

@@ -2,9 +2,9 @@
 #filter-by-container
 	#filter-by-wrapper
 		= render partial: 'dashboard/events/filter_by'
-.page-container
+.page-container.events
 	.page-wrapper
-		.grid-x.events
+		.grid-x
 			.cell.pagination-wrapper
 				.pagination-info
 					= pagy_info(@pagy).html_safe

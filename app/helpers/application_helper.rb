@@ -1,6 +1,14 @@
 module ApplicationHelper
 	include Pagy::Frontend
 	
+  def is_admin?
+    current_user&.admin?
+  end
+
+  def format_phone_num(phone_num)
+    number_to_phone(phone_num.gsub(/\D/,''), area_code: true)
+  end
+
 	def sortable(column, title = nil)
 		title ||= column.titleize
 		css_class = column.eql?(sort_column) ? "current #{sort_direction}" : nil

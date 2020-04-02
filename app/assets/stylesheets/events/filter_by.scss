@@ -2,7 +2,7 @@
 
 #filter-by-container {
 	padding: 0.5rem 1rem 0;
-	box-shadow: 0px 1px 7px -5px rgba(134, 134, 134, 0.7);
+	border-bottom: 1px solid #3340591a;
 
 	@include breakpoint(small down) {
 		padding-top: 0;
@@ -21,7 +21,7 @@
 				max-width: 288px;
 			}
 			h2.filter-by-text {
-				color: #004F71;
+				color: #1e7798;
 				font-size: 0.9rem;
 				font-weight: 500;
 				text-transform: uppercase;
@@ -36,7 +36,7 @@
 			}
 		}
 		#clear-filters {
-			color: #004F71;
+			color: #1e7798;
 			cursor: pointer;
 			font-size: 0.9rem;
 			margin: 0 0 1rem 1rem;
@@ -62,7 +62,7 @@
 						&.selected-region,
 						&:hover {
 							cursor: pointer;
-							border: 1px solid #004F71;
+							border: 1px solid #1e7798;
 						}
 					}
 				}
@@ -80,7 +80,7 @@
 				}
 
 				&:hover {
-					border: 1px solid #004F71;
+					border: 1px solid #1e7798;
 				}
 			}
 			#upcoming-events {
@@ -89,8 +89,8 @@
 			}
 			.selected-filter {
 				color: #fff;
-				background-color: #004F71;
-				border: 1px solid #004F71;
+				background-color: #1e7798;
+				border: 1px solid #1e7798;
 			}
 		}
 	}

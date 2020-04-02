@@ -2,9 +2,13 @@
 	display: flex;
 	align-items: center;
 
+	span:first-child {
+		min-width: 31.25px;
+	}
+
 	.edit-time-worked-txt {
 		margin-left: 5rem;
-		color: #1779ba;
+		color: #2492bb;
 		cursor: pointer;
 	}
 }
@@ -21,7 +25,7 @@
 		border: none;
 		margin-left: 0.5rem;
 		cursor: pointer;
-		color: #1779ba;
+		color: #2492bb;
 		background-color: transparent;
 	}
 	span {

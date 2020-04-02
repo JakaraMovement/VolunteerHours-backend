@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class AdminController < ApplicationController
-  include ApplicationHelper
   include Pagy::Backend
   before_action :authenticate_admin
   layout 'admin'

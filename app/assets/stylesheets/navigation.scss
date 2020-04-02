@@ -35,15 +35,15 @@
 			}
 		}
 		#sign-in-button {
-			border: 1px solid #004F71;
+			border: 1px solid #1e7798;
 			background-color: #fff;
 			transition: 0.5s all;
 			
 			&:hover {
-				background-color: #004F71;
+				background-color: #1e7798;
 			}
 			a {
-				color: #004F71;
+				color: #1e7798;
 				transition: 0.5s all;
 
 				&:hover {
@@ -92,7 +92,7 @@
 		background-color: #fff;
 
 		a {
-			color: #004F71;
+			color: #1e7798;
 		}
 		.nav-link#logout {
 			padding-right: 0;
@@ -117,7 +117,7 @@
 			width: 120px;
 		}
 		.fa.fa-home {
-			color: #004F71;
+			color: #1e7798;
 			margin-right: -0.5rem;
 		}
 	}
