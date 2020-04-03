@@ -13,7 +13,7 @@ module ApplicationHelper
 		title ||= column.titleize
 		css_class = column.eql?(sort_column) ? "current #{sort_direction}" : nil
 		direction = column.eql?(sort_column) && sort_direction == 'asc' ? 'desc' : 'asc'
-		link_to title, {sort: column, direction: direction}, {class: css_class}
+		link_to title, params.merge(sort: column, direction: direction, page: nil).permit!, {class: css_class}
 	end
 
 	def table_name

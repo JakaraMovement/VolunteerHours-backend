@@ -1,40 +1,42 @@
 .admin-events-page
   = link_to 'Create Event', new_admin_event_path, class: 'button'
-  %table
-    %thead
-      %tr
-        %th ID
-        %th= sortable('events.name', 'Name')
-        %th Image
-        %th Description
-        %th= sortable('start_time')
-        %th.show-for-medium= sortable('end_time')
-        %th= sortable('regions.name', 'Region')
-        %th Actions
-    %tbody
-      - @events.each do |event|
+  = render partial: 'search_form'
+  - if @events.present?
+    %table
+      %thead
         %tr
-          %td
-            = event.id
-          %td
-            = event.name
-          %td
-            = image_tag event_image_or_default_url(event), class: 'thumbnail'
-          %td
-            = truncate(event.description)
-          %td
-            = event.start_time&.strftime("%m/%d/%y")
-          %td.show-for-medium
-            = event.end_time&.strftime("%m/%d/%y")
-          %td
-            = event.region.name
-          %td
-            =link_to edit_admin_event_path(event), class: 'edit-action' do
-              %i.fa.fa-pencil
-            =link_to admin_event_path(event), class: 'delete-action', data: { confirm: "Are you sure you would like to delete the #{event.name} event?", method: :delete } do
-              %i.fa.fa-trash
-            =link_to admin_event_comments_path(event), class: 'edit-action' do
-              %i.fa.fa-comments-o
+          %th ID
+          %th= sortable('events.name', 'Name')
+          %th Image
+          %th Description
+          %th= sortable('start_time')
+          %th.show-for-medium= sortable('end_time')
+          %th= sortable('regions.name', 'Region')
+          %th Actions
+      %tbody
+        - @events.each do |event|
+          %tr
+            %td
+              = event.id
+            %td
+              = event.name
+            %td
+              = image_tag event_image_or_default_url(event), class: 'thumbnail'
+            %td
+              = truncate(event.description)
+            %td
+              = event.start_time&.strftime("%m/%d/%y")
+            %td.show-for-medium
+              = event.end_time&.strftime("%m/%d/%y")
+            %td
+              = event.region.name
+            %td
+              =link_to edit_admin_event_path(event), class: 'edit-action' do
+                %i.fa.fa-pencil
+              =link_to admin_event_path(event), class: 'delete-action', data: { confirm: "Are you sure you would like to delete the #{event.name} event?", method: :delete } do
+                %i.fa.fa-trash
+              =link_to admin_event_comments_path(event), class: 'edit-action' do
+                %i.fa.fa-comments-o
   .cell.pagination-wrapper.admin
     .pagination-info
       = pagy_info(@pagy).html_safe

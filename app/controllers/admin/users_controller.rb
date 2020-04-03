@@ -4,7 +4,7 @@ class Admin::UsersController < AdminController
   before_action :load_user, except: [:index]
   
   def index
-    @pagy, @users = pagy(User.order(sort_by_multiple_columns))
+    @pagy, @users = pagy(User.search(params[:search]).order(sort_by_multiple_columns))
   end
 
   def update

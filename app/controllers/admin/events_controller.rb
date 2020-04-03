@@ -1,7 +1,12 @@
 class Admin::EventsController < AdminController
   before_action :load_event, except: %i[index create new]
   def index
-    @pagy, @events = pagy(Event.includes(:region).order("#{sort_column} #{sort_direction}, events.name").distinct)
+    @pagy, @events = pagy(
+      Event.includes(:region)
+           .search(params[:search])
+           .order("#{sort_column} #{sort_direction}, events.name")
+           .distinct
+      )
   end
 
   def create

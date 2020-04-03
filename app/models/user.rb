@@ -26,6 +26,11 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :parent_email, presence: true
 
+  scope :search, -> (search) { 
+    where('users.first_name ILIKE ?', "%#{search}%").or(where('users.last_name ILIKE ?', "%#{search}%"))
+                                                    .or(where('users.email ILIKE ?', "%#{search}%"))
+  }
+
   enum gender: {
     Female: 0,
     Male: 1,

@@ -31,6 +31,14 @@ body {
 			background-color: #1e7798;
 		}
 	}
+	.search-button {
+		background-color: #00ab89;
+		transition: 0.5s all;
+
+		&:hover {
+			background-color: #018066;
+		}
+	}
 }
 
 // custom pagination styling

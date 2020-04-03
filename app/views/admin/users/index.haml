@@ -1,8 +1,9 @@
+= render partial: 'search_form'
 %table
   %thead
     %tr
       %th ID
-      %th= sortable('users.first_name, users.last_name','name')
+      %th= sortable('users.first_name, users.last_name','Name')
       %th= sortable('email')
       %th Phone #
       %th= sortable('admin')
