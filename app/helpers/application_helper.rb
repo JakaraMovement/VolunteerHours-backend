@@ -1,12 +1,17 @@
 module ApplicationHelper
 	include Pagy::Frontend
+  include ActionView::Helpers::NumberHelper
 	
   def is_admin?
     current_user&.admin?
   end
 
-  def total_hours_volunteered
-    current_user.volunteer_hours.pluck(:time_worked).reduce(:+) || 0
+  def decimal_to_hours_and_minutes(time)
+    return 0 if time == 0
+    time = number_with_precision(time, precision: 2)
+    time_arr = time.split('.')
+    minutes = time_arr.last.to_f/100*60
+    "#{time_arr.first}hr #{minutes.to_i}min"
   end
 
   def format_phone_num(phone_num)

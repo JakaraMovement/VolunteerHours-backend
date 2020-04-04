@@ -26,7 +26,8 @@
 		.tabs-title > a:focus, .tabs-title > a[aria-selected='true'] {
 			color: #334059;
 			background: transparent;
-			border-bottom: 3px solid #334059;
+			border-bottom: 4px solid #2e809f;
+			margin-bottom: -1px;
 		}
 		.tabs-title > a {
 			color: #334059;
@@ -41,9 +42,13 @@
 		}
 	}
 	.tabs-content {
-		border: none;
-		background: #8283840f;
-		box-shadow: inset 0px 5px 4px -5px rgb(51, 64, 88);
+		background: transparent;
+		border: 0;
+		border-top: 1px solid #696969;
+
+		.tabs-panel {
+			padding: 1rem 0;
+		}
 
 		h3.section-heading {
 			color: #334059;
@@ -56,6 +61,7 @@
 			background: #fff;
 			border-radius: 2px;
 			border: 1px solid #33405866;
+			margin-top: 1rem;
 
 			.user-info {
 				display: flex;
@@ -88,6 +94,11 @@
 				}
 			}
 		}
+		#other-info {
+			h3.section-heading {
+				margin-top: 0.5rem;
+			}
+		}
 	}
 	#user-profile-info {
 		position: relative;
@@ -110,6 +121,7 @@
 	}
 	#hours-volunteered-wrapper {
 		display: flex;
+		justify-content: center;
 		margin-top: 2rem;
 		align-items: center;
 

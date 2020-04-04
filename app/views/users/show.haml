@@ -1,12 +1,12 @@
 .page-container#user-profile
 	.page-wrapper
 		.grid-x.grid-margin-x
-			.cell.large-3.medium-3
+			.cell.large-4.medium-4.text-center
 				= image_tag 'user-placeholder.png', id: 'avatar'
 				#hours-volunteered-wrapper
 					%p#hv-title Hours volunteered:
-					%p#hv-val= number_with_delimiter(total_hours_volunteered)
-			.cell.large-9.medium-9#user-profile-info
+					%p#hv-val= number_with_delimiter(@hours_volunteered)
+			.cell.auto#user-profile-info
 				%h1#name= @user.name
 				%h2#work= @user.volunteer
 				%ul.tabs#user-info-tabs{'data-tabs' => '', 'data-deep-link' => 'true', 'data-update-history' => 'true'}
@@ -19,7 +19,7 @@
 						.tabs-content-wrapper
 							.user-info#phone
 								%p.user-info-title phone:
-								%p.user-info-val= link_to format_phone_num(@user.phone), tel: "#{format_phone_num(@user.phone)}"
+								%p.user-info-val= link_to format_phone_num(@user.phone), "tel: #{format_phone_num(@user.phone)}"
 							.user-info#address
 								%p.user-info-title address:
 								#address-wrapper
@@ -35,7 +35,7 @@
 								%p.user-info-val= @user.parent_name
 							.user-info#parent-contact
 								%p.user-info-title Phone:
-								%p.user-info-val= link_to format_phone_num(@user.parent_phone), tel: "#{format_phone_num(@user.parent_phone)}"
+								%p.user-info-val= link_to format_phone_num(@user.parent_phone), "tel: #{format_phone_num(@user.parent_phone)}"
 							.user-info#parent-email
 								%p.user-info-title Email:
 								%p.user-info-val= mail_to(@user.parent_email)
@@ -45,6 +45,7 @@
 							.user-info#birthday
 								%p.user-info-title birthday:
 								%p.user-info-val= @user.birthday.strftime('%B %d, %Y')
-							.user-info#school-year
-								%p.user-info-title School Year:
-								%p.user-info-val= @user.school_year
+							- unless @admin_user
+								.user-info#school-year
+									%p.user-info-title School Year:
+									%p.user-info-val= @user.school_year
