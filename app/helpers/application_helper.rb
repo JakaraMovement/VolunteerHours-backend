@@ -5,6 +5,10 @@ module ApplicationHelper
     current_user&.admin?
   end
 
+  def total_hours_volunteered
+    current_user.volunteer_hours.pluck(:time_worked).reduce(:+) || 0
+  end
+
   def format_phone_num(phone_num)
     number_to_phone(phone_num.gsub(/\D/,''), area_code: true)
   end
