@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     decimal_time = user.volunteer_hours.pluck(:time_worked).reduce(:+) || 0
     @hours_volunteered = decimal_to_hours_and_minutes(decimal_time)
-    @admin_user = user.admin? ? true : false
+    @admin_user = user.admin?
   end
 
   def update

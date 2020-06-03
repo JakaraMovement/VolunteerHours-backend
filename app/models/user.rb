@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  attr_reader :birth_month, :birth_day, :birth_year
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

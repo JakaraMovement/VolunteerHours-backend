@@ -2,26 +2,14 @@
 
 .page-container {
 	.page-wrapper.reg-wrapper {
-		padding: 150px 0 1.5rem;
+		padding: 2rem 0;
 		
 		.registration {
-			margin-bottom: 2rem;
+			width: 100%;
 			display: flex;
+			max-width: 600px;
+			margin: 0 auto 2rem;
 			justify-content: center;
-
-			.birthday-wrapper {
-				display: flex;
-				justify-content: space-between;
-
-				select#user_birthday_2i,
-				select#user_birthday_3i {
-					margin-right: 2rem;
-
-					@include breakpoint(small down) {
-						margin-right: 0.5rem;
-					}
-				}
-			}
 		}
 
 		.sign-in-page {
@@ -33,6 +21,13 @@
 				text-align: center;
 				color: #696969;
 			}
+		}
+
+		p.reg-label {
+			font-size: 0.875rem;
+			font-weight: normal;
+			line-height: 1.8;
+			margin: 0;
 		}
 	}
 }

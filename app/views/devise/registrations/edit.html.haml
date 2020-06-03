@@ -7,7 +7,7 @@
             .cell
               = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
                 .row
-                  %h5.text-center= t('.title', :resource => resource_class.model_name.human , :default => "Edit #{resource_name.to_s.humanize}")
+                  %h1.text-center= t('.title', :resource => resource_class.model_name.human , :default => "Edit #{resource_name.to_s.humanize}")
                 .row
                   = f.email_field :email, autofocus: true, class: "large-12 columns", placeholder: "Email"
                 .row

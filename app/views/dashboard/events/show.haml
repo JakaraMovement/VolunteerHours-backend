@@ -14,7 +14,7 @@
         %p.helper-text
           = @event.region.name
       .cell
-        %p.event-description
+        %p.event-description.description
           = @event.description
       - if Time.zone.now > @event.end_time
         .cell.large-8.medium-8

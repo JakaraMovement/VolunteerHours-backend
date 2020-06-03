@@ -7,7 +7,7 @@
             .cell
               = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
                 .row
-                  %h5.text-center= t('.sign_in', :default => "WELCOME BACK")
+                  %h1.text-center= t('.sign_in', :default => "WELCOME BACK")
                   %p.helper-text Sign in to manage your volunteer hours.
                   %br
                 .row
