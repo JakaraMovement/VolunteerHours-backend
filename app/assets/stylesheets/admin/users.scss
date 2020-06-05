@@ -1,0 +1,7 @@
+@include breakpoint(small down) {
+  table {
+    td {
+      white-space: nowrap;
+    }
+  }
+}

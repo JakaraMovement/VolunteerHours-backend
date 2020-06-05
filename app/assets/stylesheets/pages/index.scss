@@ -1,7 +1,5 @@
-@import 'foundation_and_overrides';
-
 section#home-page {
-	height: calc(100vH - 72.78px);
+	height: calc(100vH - 68.08px);
 	background: image-url('home-bg.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -10,5 +8,6 @@ section#home-page {
 
 	@include breakpoint(small down) {
 		background-position: 65% 0;
+    height: calc(100vH - 63.23px);
 	}
 }

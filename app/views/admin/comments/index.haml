@@ -1,28 +1,24 @@
+.admin-page.admin-event-comments-page
+  %h1.text-center= "#{@event.name} Comments"
 .cell
   = link_to admin_events_path do
     %i.fa.fa-chevron-left{style:'color:#7CA5C2;margin-right:0.5rem;'}
     Back to Events
   %br
   %br
-%table
-  %thead
-    %tr
-      %th ID
-      %th User
-      %th Event
-      %th Comment
-      %th Images
-  %tbody
-    - @comments.each do |comment|
+.table-scroll
+  %table
+    %thead
       %tr
-        %td
-          = comment.id
-        %td
-          = "#{comment.user.first_name} #{comment.user.last_name}"
-        %td
-          = comment.event.name
-        %td
-          = comment.text
-        %td
-          - comment.image.each do |i|
-            %img{ src: url_for(i), width: "90" }
+        %th ID
+        %th User
+        %th Comment
+    %tbody
+      - @event_comments.each do |comment|
+        %tr
+          %td
+            = comment.id
+          %td
+            = "#{comment.user.first_name} #{comment.user.last_name}"
+          %td
+            = comment.text

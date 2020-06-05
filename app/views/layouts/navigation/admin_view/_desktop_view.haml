@@ -1,0 +1,21 @@
+%ul.dropdown.menu{'data-dropdown-menu' => ''}
+  %li.admin-nav-items#events-nav
+    = link_to 'Events', admin_events_path
+    %section{class: ('pointer' if params[:controller].split('/').last&.eql?('events'))}
+  %li.admin-nav-items
+    = link_to 'Volunteers', admin_users_path
+    %section{class: ('pointer' if params[:controller].split('/').last&.eql?('users'))}
+  %li.admin-nav-items
+    = link_to 'Volunteer hours', admin_volunteer_hours_path
+    %section{class: ('pointer' if params[:controller].split('/').last&.eql?('volunteer_hours'))}
+  %li.admin-nav-items
+    = link_to 'Regions', admin_regions_path
+    %section{class: ('pointer' if params[:controller].split('/').last&.eql?('regions'))}
+%ul.dropdown.menu{'data-dropdown-menu' => ''}
+  - if user_signed_in?
+    %li.nav-item
+      = link_to 'My Profile', user_path(current_user), class: 'nav-link'
+    %li.nav-item
+      = link_to destroy_user_session_path, method: :delete, class: 'nav-link', style:'padding-right:0;' do
+        %span
+          Logout

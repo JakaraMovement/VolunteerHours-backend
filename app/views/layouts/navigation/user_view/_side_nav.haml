@@ -1,0 +1,11 @@
+%ul.side-nav{:role => 'navigation', title: 'Mobile Navigation'}
+  - if is_admin?
+    %li{role: 'navitem'}
+      = link_to 'Admin', admin_events_path
+  %li{role: 'navitem'}
+    = link_to 'Events', dashboard_events_path
+  - if user_signed_in?
+    %li{role: 'navitem'}
+      = link_to 'My Profile', user_path(current_user)
+    %li{role: 'navitem'}
+      = link_to 'Log out', destroy_user_session_path, method: :delete

@@ -1,0 +1,184 @@
+.navigation.top-bar {
+  background-color: $white;
+  border-bottom: 1px solid $light-gray;
+  padding: 0.5rem 0;
+
+  .nav-page-wrapper {
+    @include breakpoint(1232px) {
+      width: 1200px;
+    }
+    margin: 0.25rem auto;
+  }
+  .navigation-wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    @include breakpoint(small down) {
+      display: block;
+    }
+
+    #sign-up-button {
+      margin-right: 0.5rem;
+      border: 1px solid $white;
+      transition: 0.5s all;
+
+      @include breakpoint(small down) {
+        margin-right: 0;
+        margin-left: 0;
+      }
+
+      &:hover {
+        border: 1px solid #D9E1E2;
+      }
+
+      a {
+        font-weight: bold;
+        background-color: $white;
+        transition: 0.5s all;
+
+        &:hover {
+          color: $blue;
+        }
+      }
+    }
+    #sign-in-button {
+      border: 1px solid $blue;
+      background-color: $white;
+      transition: 0.5s all;
+      
+      &:hover {
+        background-color: $blue;
+      }
+      a {
+        color: $blue;
+        transition: 0.5s all;
+
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+    .nav-item {
+      position: relative;
+      margin-left: 0.5rem;
+      top: 2px;
+
+      @include breakpoint(medium down) {
+        font-size: 0.85rem;
+
+        a {
+          padding: 0.5rem;
+        }
+      }
+    }
+    .pointer {
+      position: absolute;
+      bottom: -1.25rem;
+      width: 15px;
+      height: 15px;
+      right: calc(50% - 7.5px);
+      border: 1px solid $light-gray;
+      border-bottom: 0;
+      border-right: 0;
+      z-index: 2;
+      transform: rotate(45deg);
+      background-color: $off-white;
+
+      @include breakpoint(medium down) {
+        bottom: -1.55rem;
+      }
+    }
+    li.admin-nav-items#events-nav {
+      .pointer {
+        right: calc(50% - 7.5px + 8px);
+      }
+      a {
+        padding-left: 0;
+      }
+    }
+    li.admin-nav-items {
+      position: relative;
+      top: 2px;
+
+      @include breakpoint(medium down) {
+        font-size: 0.85rem;
+      }
+
+      .pointer {
+        bottom: -1.1rem;
+      }
+    }
+  }
+  
+  ul.dropdown {
+    display: flex;
+    align-items: center;
+    background-color: $white;
+
+    @include breakpoint(small down) {
+      justify-content: space-between;
+      width: 100%;
+
+      li:last-child {
+        margin: 0;
+      }
+    }
+
+    .nav-link#logout {
+      padding-right: 0;
+    }
+  }
+
+  #signed-out-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    #authenticate-user-wrapper {
+      display: flex;
+      align-items: center;
+
+      .nav-item {
+        padding: 0.5rem;
+
+        a {
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  #logo {
+    display: flex;
+    align-items: center;
+
+    #logo-link {
+      padding: 0;
+    }
+    #jakara-logo {
+      width: 90px;
+      height: auto;
+
+      @include breakpoint(small down) {
+        width: 80px;
+      }
+    }
+    #bulldog-logo {
+      width: 120px;
+    }
+    .fa.fa-home {
+      color: $blue;
+      margin-right: -0.5rem;
+    }
+  }
+
+  .burger-icon {
+    @include burger(25px, 3px, 5px, #444);
+  }
+  #burger-menu {
+    padding: 0;
+  }
+  #burger-menu.is-active .burger-icon {
+    @include burger-to-cross;
+  }
+}

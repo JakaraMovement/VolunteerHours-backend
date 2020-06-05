@@ -8,7 +8,7 @@
 					%p#hv-val= number_with_delimiter(@hours_volunteered)
 			.cell.auto#user-profile-info
 				%h1#name= @user.name
-				%h2#work= @user.volunteer
+				%p#work= @user.volunteer
 				%ul.tabs#user-info-tabs{'data-tabs' => '', 'data-deep-link' => 'true', 'data-update-history' => 'true'}
 					%li.tabs-title.is-active
 						%a{'aria-selected' => 'true', href: '#contact-info'} contact

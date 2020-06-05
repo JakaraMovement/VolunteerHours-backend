@@ -2,7 +2,7 @@
 
 class Admin::CommentsController < AdminController
   def index
-    event = Event.find(params[:event_id])
-    @comments = event.comments
+    @event = Event.find(params[:event_id])
+    @event_comments = @event.comments
   end
 end

@@ -1,0 +1,8 @@
+.admin-page {
+    h1 {
+      margin-bottom: 1rem;
+      @include breakpoint(small down) {
+        margin-top: -1rem;
+      }
+    }
+}

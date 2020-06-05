@@ -1,0 +1,14 @@
+%ul.side-nav{:role => 'navigation', title: 'Mobile Navigation'}
+  %li{role: 'navitem'}
+    = link_to 'Events', admin_events_path
+  %li{role: 'navitem'}
+    = link_to 'Volunteers', admin_users_path
+  %li{role: 'navitem'}
+    = link_to 'Volunteer Hours', admin_volunteer_hours_path
+  %li{role: 'navitem'}
+    = link_to 'Regions', admin_regions_path
+  - if user_signed_in?
+    %li{role: 'navitem'}
+      = link_to 'My Profile', user_path(current_user)
+    %li{role: 'navitem'}
+      = link_to 'Log out', destroy_user_session_path, method: :delete

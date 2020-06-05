@@ -1,10 +1,19 @@
-@import 'foundation_and_overrides';
+#dashboard-index {
+  .dashboard-page-title {
+  	font-size: 2rem;
 
-.dashboard-page-title {
-	font-size: 2rem;
+  	@include breakpoint(small down) {
+  		font-size: 1.25rem;
+  		font-weight: 500;
+  	}
 
-	@include breakpoint(small down) {
-		font-size: 1.125rem;
-		font-weight: 500;
-	}
+  }
+  p#hours-volunteered {
+    @include breakpoint(small down) {
+      font-size: 0.85rem;
+    }
+    span {
+      color: $blue;
+    }
+  }
 }

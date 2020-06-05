@@ -23,12 +23,9 @@
             %table
               %thead
                 %tr
-                  %th
-                    Time worked
-                  %th
-                    Submitted at
-                  %th
-                    Status
+                  %th Time worked
+                  %th Submitted at
+                  %th Status
               %tbody
                 %tr
                   %td
@@ -68,9 +65,6 @@
               = "#{comment.user.first_name} #{comment.user.last_name}"
           .cell
             = comment.text
-          / .cell
-          /   -# comment.image.each do |i|
-          /     %img{src: url_for(i), width: '200'}
       .cell.large-8.medium-8
         = simple_form_for [ :dashboard, @event, @comment ] do |f|
           = f.input :text, label: 'Comment ( optional )', class: 'helper-text', input_html: {rows: 4, oninput: "if ($(this).val().length) {$('#submit-comment-btn').attr('disabled',false)} else {$('#submit-comment-btn').attr('disabled',true)}"}

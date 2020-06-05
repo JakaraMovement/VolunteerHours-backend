@@ -1,106 +1,66 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_self
- *= require_tree .
-*/
-
-@import 'foundation_and_overrides';
-@import 'custom_fonts';
-@import 'font-awesome';
+@import 'main';
 
 body {
-	background-color: #fafafa !important;
+	font-family: 'Montserrat-Medium';
+	background-color: $off-white;
+	width: 100%;
 
 	a {
-		color: #2492bb;
+		color: $blue;
+		transition: 0.5s all;
+
+		&:hover,
+		&:focus {
+			color: $green;
+		}
+	}
+	h1 {
+		@include breakpoint(medium only) {
+			font-size: 2.5rem;
+		}
+	}
+	p {
+		@include breakpoint(small down) {
+			font-size: 0.85rem;
+		}
+	}
+	table {
+		td, th {
+			@include breakpoint(medium down) {
+				font-size: 0.85rem;
+			}
+		}
 	}
 	.button {
-		background-color: #2492bb;
+		background-color: $blue;
+		transition: 0.5s all;
 
-		&:hover {
-			background-color: #1e7798;
+		&:hover,
+		&:focus {
+			background-color: $green;
 		}
 	}
 	.search-button {
-		background-color: #00ab89;
+		background-color: $green;
 		transition: 0.5s all;
 
 		&:hover {
-			background-color: #018066;
+			background-color: $green-hover;
 		}
 	}
-}
+	.page-container {
+		padding: 0 1rem;
 
-// custom pagination styling
-.pagination {
-	margin-bottom: 0 !important;
-
-	li {
-		border: 1px solid #fafafa;
-		transition: 0.5s all;
-		&:hover {
-			border: 1px solid #2492bb;
+		.page-wrapper {
+			padding: 1.5rem 0;
+			@include breakpoint(1232px) {
+				width: 1200px;
+				margin: 0 auto;
+			}
 		}
-	}
-	li.current {
-		&:hover {
-			border: 1px solid #fafafa;
-		}
-	}
-}
-.pagination-wrapper {
-	text-align: center;
-	margin-top: -0.5rem;
-	margin-bottom: 1.5rem;
 
-	.pagination-info {
-		// font-family: 'Montserrat-Regular';
-	}
-	
-	.pagy-foundation-nav {
-		margin: 0.35rem 0 0;
-	}
-}
-.pagination-wrapper.admin {
-	margin: 0;
-}
-
-.page-container {
-	padding: 0 1rem;
-
-	.page-wrapper {
-		padding: 1.5rem 0;
-		@include breakpoint(1232px) {
-			width: 1200px;
-			margin: 0 auto;
-		}
-	}
-	h1.page-title {
-		margin: 0;
-		font-size: 2rem;
-		color: #1e7798;
-	}
-
-	.helper-text {
-		color: #696969;
-	}
-	.vm-button {
-		color: #fff !important;
-		background-color: #1e7798;
-		transition: 0.5s all;
-
-		&:hover {
-			background-color: #01618a;
+		.helper-text {
+			color: $dark-gray;
 		}
 	}
 }
