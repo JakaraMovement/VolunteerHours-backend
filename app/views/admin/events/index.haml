@@ -18,10 +18,8 @@
         %tbody
           - @events.each do |event|
             %tr
-              %td
-                = event.id
-              %td
-                = event.name
+              %td= event.id
+              %td= link_to event.name, admin_event_path(event)
               %td
                 = image_tag event_image_or_default_url(event), class: 'thumbnail'
               %td.show-for-medium

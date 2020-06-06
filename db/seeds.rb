@@ -82,8 +82,3 @@ Event.create([
 		region_id: Region.last.id
 	}
 ])
-
-UserEvent.create([
-	{user_id: User.first.id, event_id: Event.first.id},
-	{user_id: User.last.id, event_id: Event.last.id}
-])

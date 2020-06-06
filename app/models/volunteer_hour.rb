@@ -2,6 +2,10 @@ class VolunteerHour < ApplicationRecord
   belongs_to :event
   belongs_to :user
 
+  REQUESTED = 'requested'
+  ACCEPTED = 'accepted'
+  REJECTED = 'rejected'
+
   enum status: { requested: 0, accepted: 1, rejected: 2 }
 
   before_save :max_limit_check

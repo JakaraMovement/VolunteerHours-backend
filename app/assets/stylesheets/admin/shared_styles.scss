@@ -1,8 +1,18 @@
 .admin-page {
-    h1 {
-      margin-bottom: 1rem;
-      @include breakpoint(small down) {
-        margin-top: -1rem;
-      }
+  h1 {
+    margin-bottom: 1rem;
+    @include breakpoint(small down) {
+      margin-top: -1rem;
     }
+  }
+  p.description {
+    span {
+      color: $blue;
+    }
+  }
+  .error-message {
+    color: $red;
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+  }
 }

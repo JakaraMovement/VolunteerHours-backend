@@ -24,7 +24,7 @@
               %thead
                 %tr
                   %th Time worked
-                  %th Submitted at
+                  %th Submitted on
                   %th Status
               %tbody
                 %tr
@@ -32,7 +32,7 @@
                     = @event_volunteer_hour.time_worked
                     hrs
                   %td
-                    = @event_volunteer_hour.created_at
+                    = format_date(@event_volunteer_hour.created_at)
                   %td
                     - if @event_volunteer_hour.status.eql?('accepted')
                       Approved

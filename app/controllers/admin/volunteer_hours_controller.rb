@@ -14,8 +14,8 @@ class Admin::VolunteerHoursController < AdminController
   end
 
   def update_hour
-    if params[:status].eql?('rejected')
-      @volunteer_hour.update_attributes(status: 'accepted', time_worked: params['time_worked'].to_f)
+    if params[:status].eql?(VolunteerHour::REJECTED)
+      @volunteer_hour.update_attributes(status: VolunteerHour::ACCEPTED, time_worked: params['time_worked'].to_f)
     else
     	@volunteer_hour.update_attributes(time_worked: params['time_worked'].to_f)
     end

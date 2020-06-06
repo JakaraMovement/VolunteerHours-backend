@@ -35,7 +35,13 @@ module ApplicationHelper
       params[:sort]
     else
     	if table_name.eql?('events') || table_name.eql?('regions')
-    		"#{table_name}.name"
+        if params[:sort]&.include?('users.first_name')
+          'users.first_name, users.last_name'
+        elsif params[:sort]&.include?('volunteer_hours.time_worked')
+          'volunteer_hours.time_worked'
+        else
+    		  "#{table_name}.name"
+        end
     	elsif table_name.eql?('users')
     		"#{table_name}.first_name, #{table_name}.last_name" 
     	elsif table_name.eql?('volunteer_hours')
@@ -75,4 +81,8 @@ module ApplicationHelper
 	def format_time(date)
 		date&.strftime("%l:%M %P")
 	end
+
+  def format_date_with_time(date)
+    "#{format_date(date)} - #{format_time(date)}"
+  end
 end

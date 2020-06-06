@@ -7,7 +7,7 @@
           %th ID
           %th= sortable('users.first_name, users.last_name','Volunteer')
           %th= sortable('events.name','Event')
-          %th= sortable('time_worked')
+          %th= sortable('time_worked', 'Hours Volunteered')
           %th= sortable('status','Review Status')
       %tbody
         - @volunteer_hours.each_with_index do |volunteer_hour, i|

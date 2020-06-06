@@ -20,7 +20,7 @@ class Dashboard::EventsController < ApplicationController
       @pagy, @events = pagy(Event.where('end_time >= ?', Time.now).order(:start_time))
     elsif params[:my_events]
       @page_title = 'My Events'
-      user_event_ids = current_user.volunteer_hours.pluck(:event_id)
+      user_event_ids = current_user.events.pluck(:id)
       @pagy, @events = pagy(Event.where(id: user_event_ids).order(start_time: :desc))
     else
       @page_title = 'All Events'
@@ -35,7 +35,7 @@ class Dashboard::EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @event_volunteer_hour = @event.volunteer_hours.where(user_id: current_user&.id).first
+    @event_volunteer_hour = @event.volunteer_hours.find_by(user_id: current_user.id)
     @comment = Comment.new
     @volunteer_hour = VolunteerHour.new
     @page_title = "#{@event.name} in #{@event.region.name}"

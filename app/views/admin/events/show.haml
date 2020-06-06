@@ -1,0 +1,32 @@
+.admin-page.admin-events-page
+  .cell
+    = link_to admin_events_path do
+      %i.fa.fa-chevron-left
+      Back to Events
+    %br
+    %br
+  %h1.text-center= @event.name
+  - if @total_hours_volunteered > 0
+    - if pending_volunteer_hours_review?( @event )
+      %p.description.text-center.error-message
+        There are volunteer hours pending your review for this event.
+    %p.description
+      Total hours volunteered:
+      %span= @total_hours_volunteered
+    .table-scroll
+      %table
+        %thead
+          %tr
+            %th= sortable('users.first_name, users.last_name','Volunteer')
+            %th= sortable('volunteer_hours.time_worked', 'Hours Volunteered')
+        %tbody
+          - @event_volunteers.each do |volunteer|
+            %tr
+              %td= volunteer.name
+              %td= hours_volunteered( volunteer.id, @event.id )
+  - elsif pending_volunteer_hours_review?( @event )
+    %p.description.text-center.error-message
+      There are volunteer hours pending your review for this event.
+  - else
+    %p.description.text-center
+      No volunteers have submitted their volunteer hours for this event, yet.

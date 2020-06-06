@@ -9,6 +9,17 @@ class Admin::EventsController < AdminController
       )
   end
 
+  def show
+    @volunteer_events = Event.includes(:users)
+                             .includes(:volunteer_hours)
+                             .where(id: @event.id)
+                             .order(sort_by_multiple_columns)
+                             .references(:users)
+                             .references(:volunteer_hours)
+    @event_volunteers = @volunteer_events.first.users.where(volunteer_hours: {status: VolunteerHour::ACCEPTED})
+    @total_hours_volunteered = @event.volunteer_hours.where(status: VolunteerHour::ACCEPTED).pluck(:time_worked).reduce(:+) || 0
+  end
+
   def create
     Event.create!(event_params)
     redirect_to admin_events_path
