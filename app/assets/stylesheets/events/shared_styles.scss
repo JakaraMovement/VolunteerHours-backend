@@ -1,7 +1,4 @@
 .events {
-	.helper-text {
-		color: #696969;
-	}
 	h2.filter-by-text {
 		font-size: 1rem;
 	}
@@ -10,8 +7,13 @@
 	}
 	.event-container {
 		.event-wrapper {
-			box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.25);
 			border-radius: 5px;
+			box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.15);
+			transition: 0.5s all;
+
+			&:hover {
+				box-shadow: 0px 1px 20px -2px rgba(0, 0, 0, 0.15);
+			}
 
 			.event-image {
 				width: 100%;
@@ -66,5 +68,55 @@
 		span {
 			height: 39px;
 		}
+	}
+	.event-section-wrapper {
+		display: flex;
+
+		p.helper-text {
+			margin: 0;
+			min-width: 120px;
+			width: auto;
+			font-size: 0.85rem;
+			position: relative;
+			top: 2px;
+			color: $blue;
+		}
+	}
+	.submit-hours-wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		a {
+			color: $green;
+			line-height: 1.6;
+			margin-bottom: 1rem;
+			transition: 0.5s all;
+
+			&:hover {
+				color: $green-hover;
+			}
+
+			@include breakpoint(small down) {
+				font-size: 0.85rem;
+			}
+		}
+	}
+	.event-details {
+		margin-bottom: 2rem;
+		padding: 1rem 1rem 0;
+		background-color: $white;
+		box-shadow: inset 0 5px 7px -5px rgba(134, 134, 134, 0.7);
+	}
+}
+#submit-hours-modal {
+	span#approved-status {
+		color: $green;
+	}
+	span#rejected-status {
+		color: $red;
+	}
+	span#pending-review-status {
+		color: $dark-gray;
 	}
 }

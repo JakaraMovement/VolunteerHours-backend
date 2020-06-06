@@ -74,15 +74,27 @@ module ApplicationHelper
   	end
   end
 
-	def format_date(date)
-		date&.strftime("%B %d, %Y")
+  def event_time(event)
+    "#{format_start_time(event)} - #{format_end_time(event)}"
+  end
+
+  def format_start_time(event)
+    event.start_time.strftime("%I:%M %p")
+  end
+
+  def format_end_time(event)
+    event.end_time.strftime("%I:%M %p")
+  end
+
+	def format_date_by_event(event)
+		event.start_time.strftime("%B %d, %Y")
 	end
 
-	def format_time(date)
-		date&.strftime("%l:%M %P")
-	end
+  def format_date_and_time(event)
+    "#{format_date_by_event(event)}  |  #{event_time(event)}"
+  end
 
-  def format_date_with_time(date)
-    "#{format_date(date)} - #{format_time(date)}"
+  def format_date(date)
+    date.strftime("%B %d, %Y")
   end
 end
