@@ -1,40 +1,32 @@
 .page-container.events
   .page-wrapper
-    .grid-x
-      .cell.large-8.medium-9
-        = link_to dashboard_events_path do
-          %i.fa.fa-chevron-left
-          Back to Events
-        %br
-        %br
-        %h1= @event.name
-        .submit-hours-wrapper
-          %p.helper-text= @event.region.name
-          = link_to 'Submit Hours', 'javascript:void(0)', data: {open: 'submit-hours-modal'} if Time.zone.now > @event.end_time
-        .event-details
-          .event-section-wrapper
-            %p.helper-text WHEN:
-            %p.description= format_date_and_time(@event)
-          .event-section-wrapper        
-            %p.helper-text VENUE:
-            %p.description= @event.venue
-          .event-section-wrapper        
-            %p.helper-text DETAILS:
+    .grid-x.grid-margin-x
+      .cell
+        .show-events-page-wrapper
+          %h1= @event.name
+          .submit-hours-wrapper
+            %p.helper-text= @event.region.name
+            = link_to 'Submit Hours', 'javascript:void(0)', data: {open: 'submit-hours-modal'} if Time.zone.now > @event.end_time
+    .grid-x.grid-margin-x.show-events-details-container
+      .cell.large-8
+        .show-events-page-wrapper
+          .event-details
+            .event-image{style: "background-image: url(#{event_image_or_default_url(@event)})"}
+            %h2.page-subheading Details
             %p.event-description.description= @event.description
-        %h4
-          Comments
-        - @event.comments.each do |comment|
-          .cell
-            %span
-              = "#{comment.user.first_name} #{comment.user.last_name}"
-          .cell
-            = comment.text
-        = simple_form_for [ :dashboard, @event, @comment ] do |f|
-          = f.input :text, label: 'Comment ( optional )', class: 'helper-text', input_html: {rows: 4, oninput: "if ($(this).val().length) {$('#submit-comment-btn').attr('disabled',false)} else {$('#submit-comment-btn').attr('disabled',true)}"}
-          =# f.file_field :image, multiple: true
-          = f.submit 'Submit', class: 'button', id: 'submit-comment-btn', disabled: ''
+          =# render partial: 'dashboard/events/comments'
 
-        #submit-hours-modal.reveal{'data-reveal' => ''}
           = render partial: 'dashboard/events/submit_hours'
-          %button.close-button{'aria-label' => 'Close modal', 'data-close' => '', type: 'button'}
-            %span{'aria-hidden' => 'true'} ×
+      .cell.large-4.page-sidebar
+        .show-events-page-sidebar
+          .event-section-wrapper
+            %span.event-info-icons
+              %i.fa.fa-calendar-check-o{'aria-hidden' => 'true'}
+            .event-info
+              %p.description= format_date_by_event(@event)
+              %p.description= event_time(@event)
+          .event-section-wrapper        
+            %span.event-info-icons
+              %i.fa.fa-map-marker{'aria-hidden' => 'true'}
+            .event-info
+              %p.description= @event.venue

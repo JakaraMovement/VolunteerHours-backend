@@ -75,7 +75,7 @@ module ApplicationHelper
   end
 
   def event_time(event)
-    "#{format_start_time(event)} - #{format_end_time(event)}"
+    "#{format_start_time(event)} to #{format_end_time(event)} PDT"
   end
 
   def format_start_time(event)
@@ -87,12 +87,8 @@ module ApplicationHelper
   end
 
 	def format_date_by_event(event)
-		event.start_time.strftime("%B %d, %Y")
+		event.start_time.strftime("%A, %B %d, %Y")
 	end
-
-  def format_date_and_time(event)
-    "#{format_date_by_event(event)}  |  #{event_time(event)}"
-  end
 
   def format_date(date)
     date.strftime("%B %d, %Y")

@@ -15,9 +15,14 @@ body {
 		}
 	}
 	h1 {
-		@include breakpoint(medium only) {
+		@include breakpoint(medium) {
 			font-size: 2.5rem;
 		}
+	}
+	h2.page-subheading {
+		font-size: 1.5rem;
+		line-height: 1;
+		margin: 1rem 0;
 	}
 	p {
 		@include breakpoint(small down) {
