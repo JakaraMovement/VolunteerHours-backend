@@ -8,13 +8,24 @@
       width: 1200px;
     }
     margin: 0.25rem auto;
+
+    .show-for-extra-large-only {
+      @include breakpoint(1231px down) {
+        display: none;
+      }
+    }
+    .hide-for-extra-large {
+      @include breakpoint(1232px) {
+        display: none;
+      } 
+    }
   }
   .navigation-wrapper {
-    display: flex;
-    justify-content: space-between;
+    display: block;
 
-    @include breakpoint(small down) {
-      display: block;
+    @include breakpoint(1232px) {
+      display: flex;
+      justify-content: space-between;
     }
 
     #sign-up-button {
@@ -109,24 +120,28 @@
       }
     }
   }
+
+  .navigation-wrapper.logged-out-view {
+    display: flex;
+    justify-content: space-between;
+  }
   
   ul.dropdown {
     display: flex;
     align-items: center;
     background-color: $white;
+    justify-content: space-between;
 
-    @include breakpoint(small down) {
-      justify-content: space-between;
-      width: 100%;
-
-      li:last-child {
-        margin: 0;
-      }
+    li:last-child {
+      margin: 0;
     }
 
     .nav-link#logout {
       padding-right: 0;
     }
+  }
+  ul.dropdown.right-dropdown-ul {
+    justify-content: flex-end;
   }
 
   #signed-out-nav {
@@ -176,7 +191,8 @@
     @include burger(25px, 3px, 5px, #444);
   }
   #burger-menu {
-    padding: 0;
+    padding-top: 0.1px;
+    padding-bottom: 0.1px;
   }
   #burger-menu.is-active .burger-icon {
     @include burger-to-cross;

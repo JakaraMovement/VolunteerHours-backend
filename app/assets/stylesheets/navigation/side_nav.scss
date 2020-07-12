@@ -1,7 +1,7 @@
 .navigation-wrapper {
   #mobile-nav-container {
     position: relative;
-    left: -150px;
+    left: -250px;
 
     ul.side-nav {
       position: absolute;
@@ -11,18 +11,27 @@
       top: 0.8rem;
       padding: 0.5rem 0.75rem;
       background-color: #fefefe;
-      min-width: 150px;
+      min-width: 250px;
       width: auto;
       box-shadow: 0px 1px 2px -1px rgba(0,0,0,0.25);
+      z-index: 1;
 
       li {
-        font-size: 0.85rem;
+        font-size: 1rem;
         padding: 0.25rem 0;
         border-bottom: 1px solid #ddd;
 
         &:last-child {
           border-bottom: none;
         }
+      }
+
+      li.admin-head-li {
+        font-family: 'CrimsonText-SemiBold';
+        font-size: 1.2rem;
+      }
+      li.admin-li {
+        padding-left: 1.5rem;
       }
     }
   }

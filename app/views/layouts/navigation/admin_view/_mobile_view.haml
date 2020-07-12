@@ -9,7 +9,7 @@
     = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link', id: 'logout'
 
 #mobile-nav-container
-  = render partial: 'layouts/navigation/admin_view/side_nav'
+  = render partial: 'layouts/navigation/user_view/side_nav'
 
 :javascript
   $('#burger-menu').on('click', function(e){
@@ -17,7 +17,7 @@
     if ($('#burger-menu').hasClass('is-active')) {
       $('#mobile-nav-container').animate({left: 0});
     } else {
-      $('#mobile-nav-container').animate({left: -150});
+      $('#mobile-nav-container').animate({left: -250});
     }
     e.preventDefault();
   })

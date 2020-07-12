@@ -3,12 +3,16 @@
 		.grid-x.grid-margin-x
 			.cell.large-4.medium-4.text-center
 				= image_tag 'user-placeholder.png', id: 'avatar'
-				#hours-volunteered-wrapper
+				#hours-volunteered-wrapper.show-for-medium
 					%p#hv-title Hours volunteered:
 					%p#hv-val= number_with_delimiter(@hours_volunteered)
 			.cell.auto#user-profile-info
-				%h1#name= @user.name
-				%p#work= @user.volunteer
+				.name-wrapper
+					%h1#name= @user.name
+					%p.show-for-medium#work= @user.volunteer
+				#hours-volunteered-wrapper.show-for-small-only
+					%p#hv-title Hours volunteered:
+					%p#hv-val= number_with_delimiter(@hours_volunteered)
 				%ul.tabs#user-info-tabs{'data-tabs' => '', 'data-deep-link' => 'true', 'data-update-history' => 'true'}
 					%li.tabs-title.is-active
 						%a{'aria-selected' => 'true', href: '#contact-info'} contact

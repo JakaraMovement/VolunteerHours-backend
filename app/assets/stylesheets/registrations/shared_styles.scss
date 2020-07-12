@@ -1,25 +1,10 @@
 .page-container {
-	.page-wrapper.reg-wrapper {
+	.page-wrapper.session-wrapper {
 		padding: 2rem 0;
-		
-		.registration {
-			width: 100%;
-			display: flex;
-			max-width: 600px;
-			margin: 0 auto 2rem;
-			justify-content: center;
+
+		.helper-text {
+			text-align: center;
 		}
-
-		.sign-in-page {
-			margin-bottom: 2rem;
-			display: flex;
-			justify-content: center;
-
-			.helper-text {
-				text-align: center;
-			}
-		}
-
 		p.reg-label {
 			font-size: 0.875rem;
 			font-weight: normal;

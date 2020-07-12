@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
 
-  root to: 'pages#index'
+  # root to: 'pages#index'
+  root to: redirect('/users/sign_in')
   resources :users, only: %i[show update destroy]
 
   namespace :dashboard do

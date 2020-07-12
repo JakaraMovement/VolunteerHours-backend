@@ -5,22 +5,31 @@
 	img#avatar {
 		width: 200px;
 	}
-	h1#name {
-		color: #334059;
-		line-height: 1;
-		font-size: 2.5rem;
-		font-weight: bold;
-	}
-	p#work {
-		color: #00ab89;
-		line-height: 1;
-		margin: 1rem 0;
-		font-size: 1.2rem;
+	.name-wrapper {
+		@include breakpoint(small down) {
+			text-align: center;
+		}
+		h1#name {
+			color: #334059;
+			line-height: 1;
+			font-size: 2.5rem;
+			font-weight: bold;
+		}
+		p#work {
+			color: #00ab89;
+			line-height: 1;
+			margin: 1rem 0;
+			font-size: 1.2rem;
+		}
 	}
 	ul.tabs#user-info-tabs {
 		border: none;
 		margin-top: 4rem;
 		background: transparent;
+
+		@include breakpoint(small down) {
+			margin-top: 2rem;
+		}
 
 		.tabs-title > a:focus, .tabs-title > a[aria-selected='true'] {
 			color: #334059;

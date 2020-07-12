@@ -9,7 +9,7 @@
   - if @total_hours_volunteered > 0
     - if pending_volunteer_hours_review?( @event )
       %p.description.text-center.error-message
-        There are volunteer hours pending your review for this event.
+        Volunteer hours are pending your review for this event.
     %p.description
       Total hours volunteered:
       %span= @total_hours_volunteered
@@ -26,7 +26,7 @@
               %td= hours_volunteered( volunteer.id, @event.id )
   - elsif pending_volunteer_hours_review?( @event )
     %p.description.text-center.error-message
-      There are volunteer hours pending your review for this event.
+      Volunteer hours are pending your review for this event.
   - else
     %p.description.text-center
-      No volunteers have submitted their volunteer hours for this event, yet.
+      No volunteer hours submitted for this event, yet.

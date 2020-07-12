@@ -24,11 +24,11 @@
 
 :javascript
   $('#burger-menu').on('click', function(e){
+    e.preventDefault();
     this.classList.toggle('is-active');
     if ($('#burger-menu').hasClass('is-active')) {
       $('#mobile-nav-container').animate({left: 0});
     } else {
-      $('#mobile-nav-container').animate({left: -150});
+      $('#mobile-nav-container').animate({left: -250});
     }
-    e.preventDefault();
   })
