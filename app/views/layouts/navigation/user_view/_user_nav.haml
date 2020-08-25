@@ -2,7 +2,7 @@
   .top-bar-left
     .page-container
       .nav-page-wrapper
-        .navigation-wrapper.show-for-medium{class: ('logged-out-view' unless user_signed_in?)}
+        .navigation-wrapper.user-view.show-for-medium{class: ('logged-out-view' unless user_signed_in?)}
           = render partial: 'layouts/navigation/user_view/desktop_view'
         .navigation-wrapper.show-for-small-only
           = render partial: 'layouts/navigation/user_view/mobile_view'

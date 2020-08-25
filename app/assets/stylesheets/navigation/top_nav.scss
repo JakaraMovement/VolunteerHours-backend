@@ -120,6 +120,12 @@
       }
     }
   }
+  .navigation-wrapper.user-view {
+    @include breakpoint(medium) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 
   .navigation-wrapper.logged-out-view {
     display: flex;
@@ -193,6 +199,7 @@
   #burger-menu {
     padding-top: 0.1px;
     padding-bottom: 0.1px;
+    padding-left: 0;
   }
   #burger-menu.is-active .burger-icon {
     @include burger-to-cross;
