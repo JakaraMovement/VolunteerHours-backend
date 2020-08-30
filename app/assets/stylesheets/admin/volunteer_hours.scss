@@ -1,42 +1,91 @@
-.display-time-worked {
-	display: flex;
-	align-items: center;
+.admin-vh-page {
+		#filter-by-school-year {
+			margin-bottom: 1rem;
 
-	span:first-child {
-		min-width: 31.25px;
-	}
+			h2.filter-by-text {
+				color: $blue;
+				font-size: 0.9rem;
+				font-weight: 500;
+				text-transform: uppercase;
+			}
+			#filter-options-wrapper {
+				display: flex;
+				align-items: center;
 
-	.edit-time-worked-txt {
-		margin-left: 5rem;
-		color: #2492bb;
-		cursor: pointer;
-	}
-}
-.edit-time-worked-form {
-	display: none;
-	align-items: center;
+				#school-years-wrapper {
+					margin-right: 1rem;
 
-	input[type='number'] {
-		width: 100px;
-		max-width: 100%;
-	}
-	input[type='submit'] {
-		margin: 0 0 1rem;
-		border: none;
-		margin-left: 0.5rem;
-		cursor: pointer;
-		color: #2492bb;
-		background-color: transparent;
-	}
-	span {
-		margin-bottom: 1rem;
-		color: #696969;
+					form {
+						width: 220px;
+						max-width: 100%;
 
-		&:last-child {
-			padding-left: 7px;
+						select {
+	            height: auto;
+	            font-size: 0.85rem;
+	            padding-top: 0.407rem;
+	            padding-bottom: 0.407rem;
+
+	            &.selected-school-year,
+	            &:hover {
+	              cursor: pointer;
+	              border: 1px solid $blue;
+	            }
+	          }
+	        }
+	      }
+	      #clear-filters {
+					color: $blue;
+					cursor: pointer;
+					font-size: 0.85rem;
+					margin: 0 0 1rem 0;
+		      transition: 0.5s all;
+
+		      &:hover {
+		        color: $green;
+		      }
+				}
+	    }
+		}
+	.display-time-worked {
+		display: flex;
+		align-items: center;
+
+		span:first-child {
+			min-width: 31.25px;
+		}
+
+		.edit-time-worked-txt {
+			margin-left: 5rem;
+			color: #2492bb;
+			cursor: pointer;
 		}
 	}
-	.cancel-time-worked {
-		cursor: pointer;
+	.edit-time-worked-form {
+		display: none;
+		align-items: center;
+
+		input[type='number'] {
+			width: 100px;
+			max-width: 100%;
+		}
+		input[type='submit'] {
+			margin: 0 0 1rem;
+			border: none;
+			margin-left: 0.5rem;
+			cursor: pointer;
+			color: #2492bb;
+			background-color: transparent;
+		}
+		span {
+			margin-bottom: 1rem;
+			color: #696969;
+
+			&:last-child {
+				padding-left: 7px;
+			}
+		}
+		.cancel-time-worked {
+			cursor: pointer;
+		}
 	}
 }

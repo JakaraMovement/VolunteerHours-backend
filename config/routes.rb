@@ -28,6 +28,9 @@ Rails.application.routes.draw do
     resources :volunteer_hours do
       post 'update_hour', as: :update_hour
       post 'update_status', as: :update_status
+      collection do
+        get 'filter_volunteer_hours', as: :filter
+      end
     end
   end
 end

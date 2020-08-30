@@ -1,9 +1,5 @@
 #filter-by-text-wrapper
 	%h2.filter-by-text Filter by:
-	= form_with url: filter_dashboard_events_path, method: :get do |f|
-		= hidden_field_tag :clear_filters, true
-		#clear-filters.show-for-smaller-screens{onclick: "$(this).closest('form').submit()"}
-			Clear	
 #filter-options-wrapper
 	#regions-wrapper
 		= form_with url: filter_dashboard_events_path, method: :get do |f|
