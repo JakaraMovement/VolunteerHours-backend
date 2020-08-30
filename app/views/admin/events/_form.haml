@@ -1,6 +1,7 @@
 .grid-x
 	.cell.large-6.medium-6
 		= simple_form_for [:admin, @event] do |f|
+			= f.input :active, as: :boolean
 			= f.input :name
 			= f.input :description, input_html: {rows: '4'}
 			= f.input :max_limit

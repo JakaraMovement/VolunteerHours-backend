@@ -1,12 +1,21 @@
 class Admin::EventsController < AdminController
   before_action :load_event, except: %i[index create new]
   def index
+    params[:active] ||= 'true'
+    if params[:active].eql?('true')
+      events = Event.active
+      @events_title = 'Active Events'
+    else
+      events = Event.archived
+      @events_title = 'Archived Events'
+    end
+    
     @pagy, @events = pagy(
-      Event.includes(:region)
-           .search(params[:search])
-           .order("#{sort_column} #{sort_direction}, events.name")
-           .distinct
-      )
+      events.includes(:region)
+            .search(params[:search])
+            .order("#{sort_column} #{sort_direction}, events.name")
+            .distinct
+    )
   end
 
   def show

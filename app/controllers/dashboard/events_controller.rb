@@ -4,27 +4,28 @@ class Dashboard::EventsController < ApplicationController
 
   def index
     @page_title = 'All Events'
-    @pagy, @events = pagy(Event.order(start_time: :desc))
+    @pagy, @events = pagy(Event.active.order(start_time: :desc))
   end
 
   def filter_events
     region_id = params[:region_id]
+    events = Event.active
     if region_id.present?
       @page_title = "Events in #{Region.find(region_id).name}"
-      @pagy, @events = pagy(Event.where(region_id: region_id).order(start_time: :desc))
+      @pagy, @events = pagy(events.where(region_id: region_id).order(start_time: :desc))
     elsif params[:past_events]
       @page_title = 'Past Events'
-      @pagy, @events = pagy(Event.where('end_time < ?', Time.now).order(start_time: :desc))
+      @pagy, @events = pagy(events.where('end_time < ?', Time.now).order(start_time: :desc))
     elsif params[:upcoming_events]
       @page_title = 'Upcoming Events'
-      @pagy, @events = pagy(Event.where('end_time >= ?', Time.now).order(:start_time))
+      @pagy, @events = pagy(events.where('end_time >= ?', Time.now).order(:start_time))
     elsif params[:my_events]
       @page_title = 'My Events'
       user_event_ids = current_user.events.pluck(:id)
-      @pagy, @events = pagy(Event.where(id: user_event_ids).order(start_time: :desc))
+      @pagy, @events = pagy(events.where(id: user_event_ids).order(start_time: :desc))
     else
       @page_title = 'All Events'
-      @pagy, @events = pagy(Event.order(start_time: :desc))
+      @pagy, @events = pagy(events.order(start_time: :desc))
     end
 
     respond_to do |format|
@@ -49,8 +50,8 @@ class Dashboard::EventsController < ApplicationController
     elsif params[:upcoming_events].present?
       'activerecord.models.upcoming_events'
     elsif params[:region_id].present?
-      count = Region.find_by(id: params[:region_id])&.events&.count
-      count && count > 1 ? 'activerecord.models.events' : "activerecord.models.#{Event.model_name.i18n_key}"
+      regional_events = Region.find_by(id: params[:region_id])&.events
+      regional_events&.count > 1 ? 'activerecord.models.events' : "activerecord.models.#{Event.model_name.i18n_key}"
     else
       "activerecord.models.events"
     end

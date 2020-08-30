@@ -1,8 +1,13 @@
 .admin-page.admin-events-page
-  %h1.text-center Events
-  = link_to 'Create Event', new_admin_event_path, class: 'button'
-  = render partial: 'search_form'
-  - if @events.present?
+  %h1.text-center= @events_title
+  %ul.event-tabs-ul
+    = link_to admin_events_path(active: true), class: ('active' if params[:active] == 'true') do
+      %li Active
+    = link_to admin_events_path(active: false), class: ('active' if params[:active] == 'false') do
+      %li Archived
+  = link_to 'Create Event', new_admin_event_path, class: 'button' if params[:active] == 'true'
+  - if @events.any?
+    = render partial: 'search_form'
     .table-scroll
       %table
         %thead
@@ -37,7 +42,7 @@
                   %i.fa.fa-trash
                 =link_to admin_event_comments_path(event), class: 'edit-action' do
                   %i.fa.fa-comments-o
-  .cell.pagination-wrapper.admin
+  .pagination-wrapper.admin
     .pagination-info
       = pagy_info(@pagy).html_safe
     = pagy_foundation_nav(@pagy).html_safe if @pagy.pages > 1

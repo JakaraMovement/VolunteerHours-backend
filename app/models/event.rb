@@ -13,5 +13,7 @@ class Event < ApplicationRecord
   validates :start_time, presence: true
   validates :end_time, presence: true
 
+  scope :active, -> { where(active: true) }
+  scope :archived, -> { where(active: false) }
   scope :search, -> (search) { where('events.name ILIKE ?', "%#{search}%") }
 end
