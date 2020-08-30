@@ -7,6 +7,7 @@
           %th ID
           %th= sortable('users.first_name, users.last_name','Volunteer')
           %th= sortable('events.name','Event')
+          %th= sortable('regions.name', 'Region')
           %th= sortable('time_worked', 'Hours Volunteered')
           %th= sortable('status','Review Status')
       %tbody
@@ -18,6 +19,8 @@
               = "#{volunteer_hour.user.first_name} #{volunteer_hour.user.last_name}"
             %td
               = volunteer_hour.event.name
+            %td
+              = volunteer_hour.region.name
             %td
               .display-time-worked{id: "display-time-worked-#{i+1}"}
                 %span= volunteer_hour.time_worked

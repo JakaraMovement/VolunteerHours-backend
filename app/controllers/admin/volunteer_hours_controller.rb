@@ -5,7 +5,7 @@ class Admin::VolunteerHoursController < AdminController
   def index
     @volunteer_hour = VolunteerHour.new
     @pagy, @volunteer_hours = pagy(
-      VolunteerHour.includes(:event)
+      VolunteerHour.includes(:event => :region)
                    .includes(:user)
                    .order(sort_by_multiple_columns)
                    .references(:event)

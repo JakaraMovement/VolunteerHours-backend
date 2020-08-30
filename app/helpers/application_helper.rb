@@ -49,6 +49,8 @@ module ApplicationHelper
     			'users.first_name, users.last_name'
     		elsif params[:sort]&.eql?('events.name')
     			'events.name'
+        elsif params[:sort]&.eql?('regions.name')
+          'regions.name'
     		else
     			"#{table_name}.status"
     		end

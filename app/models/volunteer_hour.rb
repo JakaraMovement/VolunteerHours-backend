@@ -2,6 +2,8 @@ class VolunteerHour < ApplicationRecord
   belongs_to :event
   belongs_to :user
 
+  delegate :region, to: :event, allow_nil: true
+
   REQUESTED = 'requested'
   ACCEPTED = 'accepted'
   REJECTED = 'rejected'
