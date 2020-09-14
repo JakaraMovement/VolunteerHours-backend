@@ -18,6 +18,10 @@ class Admin::EventsController < AdminController
     )
   end
 
+  def new
+    @event = Event.new
+  end
+
   def show
     @volunteer_events = Event.includes(:users)
                              .includes(:volunteer_hours)
@@ -37,10 +41,6 @@ class Admin::EventsController < AdminController
   def update
     @event.update(event_params)
     redirect_to admin_events_path
-  end
-
-  def new
-    @event = Event.new
   end
 
   def destroy

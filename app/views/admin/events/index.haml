@@ -1,11 +1,11 @@
 .admin-page.admin-events-page
   %h1.text-center= @events_title
-  %ul.event-tabs-ul
+  %ul.tabs-ul
     = link_to admin_events_path(active: true), class: ('active' if params[:active] == 'true') do
       %li Active
     = link_to admin_events_path(active: false), class: ('active' if params[:active] == 'false') do
       %li Archived
-  = link_to 'Create Event', new_admin_event_path, class: 'button' if params[:active] == 'true'
+  = link_to 'New Event', new_admin_event_path, class: 'button' if params[:active] == 'true'
   - if @events.any?
     = render partial: 'search_form'
     .table-scroll

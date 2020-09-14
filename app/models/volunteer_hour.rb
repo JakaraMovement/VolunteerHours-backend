@@ -8,6 +8,12 @@ class VolunteerHour < ApplicationRecord
   ACCEPTED = 'accepted'
   REJECTED = 'rejected'
 
+  validates_presence_of :event
+  validates_presence_of :user
+
+  scope :reviewed, -> { where(status: [ACCEPTED, REJECTED]) }
+  scope :pending_review, -> { where(status: REQUESTED) }
+
   enum status: { requested: 0, accepted: 1, rejected: 2 }
 
   before_save :max_limit_check

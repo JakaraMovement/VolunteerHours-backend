@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       post 'update_status', as: :update_status
       collection do
         get 'filter_volunteer_hours', as: :filter
+        get 'unvolunteered_events', as: :unvolunteered_events
       end
     end
   end
