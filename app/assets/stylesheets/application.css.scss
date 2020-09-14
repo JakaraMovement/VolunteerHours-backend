@@ -48,6 +48,7 @@ body {
 	.search-button {
 		background-color: $green;
 		transition: 0.5s all;
+		max-height: 39px;
 
 		&:hover {
 			background-color: $green-hover;

@@ -6,7 +6,7 @@
           %h1= @event.name
           .submit-hours-wrapper
             %p.helper-text= @event.region.name
-            = link_to 'Submit Hours', 'javascript:void(0)', data: {open: 'submit-hours-modal'} if Time.zone.now > @event.end_time
+            = link_to 'Submit Hours', 'javascript:void(0)', data: {open: 'submit-hours-modal'} unless @event.deadline_passed?(@event_volunteer_hour)
     .grid-x.grid-margin-x.show-events-details-container
       .cell.large-8
         .show-events-page-wrapper

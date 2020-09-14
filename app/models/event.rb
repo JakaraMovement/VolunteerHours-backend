@@ -16,4 +16,14 @@ class Event < ApplicationRecord
   scope :active, -> { where(active: true) }
   scope :archived, -> { where(active: false) }
   scope :search, -> (search) { where('events.name ILIKE ?', "%#{search}%") }
+
+  def event_ended?
+    Time.zone.now > end_time
+  end
+
+  # submit hours
+  def deadline_passed?(event_volunteer_hour = nil)
+    return false if event_volunteer_hour.present?
+    event_ended? && Time.zone.now > (end_time + 5.months)
+  end
 end
