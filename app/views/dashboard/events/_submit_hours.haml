@@ -1,6 +1,6 @@
 #submit-hours-modal.reveal{'data-reveal' => ''}
   .grid-x
-    - if @event_volunteer_hour.present?
+    - if @event_volunteer_hour.present? && !@event_volunteer_hour.status.eql?(VolunteerHour::REJECTED)
       %h4 Hours submitted
       %table
         %thead
@@ -18,14 +18,16 @@
             %td
               - if @event_volunteer_hour.status.eql?(VolunteerHour::ACCEPTED)
                 %span#approved-status Approved
-              - elsif @event_volunteer_hour.status.eql?(VolunteerHour::REJECTED)
-                %span#rejected-status Rejected
               - else
                 %span#pending-review-status Pending Review
 
     - else
       %h4 Submit hours
       .cell
+        - if @event_volunteer_hour.status.eql?(VolunteerHour::REJECTED)
+          %span#rejected-status Your previously submitted hours were rejected, please resubmit
+          %br
+          %br
         = form_for [:dashboard, @event, @volunteer_hour] do |f|
           = f.label 'Time worked:'
           .grid-x.grid-margin-x#hours-worked-wrapper

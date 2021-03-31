@@ -64,7 +64,7 @@ class Admin::VolunteerHoursController < AdminController
 
   def update_status
     @volunteer_hour.update(status: params['status'])
-    redirect_to admin_volunteer_hours_path
+    redirect_to admin_volunteer_hours_path(direction: 'asc', reviewed: 'false', sort: 'regions.name')
   end
 
   private

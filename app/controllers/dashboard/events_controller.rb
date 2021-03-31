@@ -38,7 +38,7 @@ class Dashboard::EventsController < ApplicationController
     @comment = Comment.new
     @volunteer_hour = VolunteerHour.new
     @event = Event.find(params[:id])
-    @event_volunteer_hour = @event.volunteer_hours.find_by(user_id: current_user.id)
+    @event_volunteer_hour = @event.volunteer_hours.where(user_id: current_user.id).last
     @page_title = "#{@event.name} in #{@event.region.name}"
   end
 
