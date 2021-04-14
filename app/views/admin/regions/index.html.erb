@@ -1,0 +1,43 @@
+<div class="admin-page admin-page admin-regions-page">
+  <h1 class="text-center">Regions</h1>
+  <%= link_to 'New Region', new_admin_region_path, class: 'button' %>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>
+            <%= sortable('name') %>
+          </th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @regions.each do |region| %>
+          <tr>
+            <td>
+              <%= region.id %>
+            </td>
+            <td>
+              <%= region.name %>
+            </td>
+            <td>
+              <%= link_to edit_admin_region_path(region), class: 'edit-action' do %>
+                <i class="fa fa-pencil"></i>
+              <% end %>
+              <%= link_to admin_region_path(region), class: 'delete-action', data: { confirm: "Are you sure you would like to delete the region, #{region.name}?", method: :delete } do %>
+                <i class="fa fa-trash"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="cell pagination-wrapper admin">
+    <div class="pagination-info">
+      <%= pagy_info(@pagy).html_safe %>
+    </div>
+    <%= pagy_foundation_nav(@pagy).html_safe if @pagy.pages > 1 %>
+  </div>
+</div>

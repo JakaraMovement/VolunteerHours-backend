@@ -1,0 +1,22 @@
+<ul class="side-nav" role="navigation">
+  <li role="navitem">
+    <%= link_to 'Events', admin_events_path %>
+  </li>
+  <li role="navitem">
+    <%= link_to 'Volunteers', admin_users_path %>
+  </li>
+  <li role="navitem">
+    <%= link_to 'Volunteer Hours', admin_volunteer_hours_path %>
+  </li>
+  <li role="navitem">
+    <%= link_to 'Regions', admin_regions_path %>
+  </li>
+  <% if user_signed_in? %>
+    <li role="navitem">
+      <%= link_to 'My Profile', user_path(current_user) %>
+    </li>
+    <li role="navitem">
+      <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+    </li>
+  <% end %>
+</ul>

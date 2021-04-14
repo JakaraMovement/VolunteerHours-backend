@@ -1,0 +1,60 @@
+<div class="page-container events">
+  <div class="page-wrapper">
+    <div class="grid-x grid-margin-x">
+      <div class="cell">
+        <div class="show-events-page-wrapper">
+          <h1>
+            <%= @event.name %>
+          </h1>
+          <div class="submit-hours-wrapper">
+            <p class="helper-text">
+              <%= @event.region.name %>
+            </p>
+            <%= link_to 'Submit Hours', 'javascript:void(0)', data: {open: 'submit-hours-modal'} unless @event.deadline_passed?(@event_volunteer_hour) %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-x grid-margin-x show-events-details-container">
+      <div class="cell large-8">
+        <div class="show-events-page-wrapper">
+          <div class="event-details">
+            <div class="event-image" style="background-image: url(<%= event_image_or_default_url(@event) %>)"></div>
+            <h2 class="page-subheading">Details</h2>
+            <p class="event-description description">
+              <%= @event.description %>
+            </p>
+          </div>
+          <%= render partial: 'dashboard/events/submit_hours' %>
+        </div>
+      </div>
+      <div class="cell large-4 page-sidebar">
+        <div class="show-events-page-sidebar">
+          <div class="event-section-wrapper">
+            <span class="event-info-icons">
+              <i aria-hidden="true" class="fa fa-calendar-check-o"></i>
+            </span>
+            <div class="event-info">
+              <p class="description">
+                <%= format_date_by_event(@event) %>
+              </p>
+              <p class="description">
+                <%= event_time(@event) %>
+              </p>
+            </div>
+          </div>
+          <div class="event-section-wrapper">
+            <span class="event-info-icons">
+              <i aria-hidden="true" class="fa fa-map-marker"></i>
+            </span>
+            <div class="event-info">
+              <p class="description">
+                <%= @event.venue %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

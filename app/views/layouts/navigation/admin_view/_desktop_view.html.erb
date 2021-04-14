@@ -1,0 +1,35 @@
+<ul class="dropdown menu">
+  <li class="admin-nav-items" id="events-nav">
+    <%= link_to 'Events', admin_events_path %>
+    <section class="<%= ('pointer' if params[:controller].split('/').last&.eql?('events')) %>"></section>
+  </li>
+  <li class="admin-nav-items">
+    <%= link_to 'Volunteers', admin_users_path %>
+    <section class="<%= ('pointer' if params[:controller].split('/').last&.eql?('users')) %>"></section>
+  </li>
+  <li class="admin-nav-items">
+    <%= link_to 'Volunteer hours', admin_volunteer_hours_path %>
+    <section class="<%= ('pointer' if params[:controller].split('/').last&.eql?('volunteer_hours')) %>"></section>
+  </li>
+  <li class="admin-nav-items">
+    <%= link_to 'Regions', admin_regions_path %>
+    <section class="<%= ('pointer' if params[:controller].split('/').last&.eql?('regions')) %>"></section>
+  </li>
+  <li class="admin-nav-items">
+    <%= link_to 'User Events', dashboard_events_path %>
+  </li>
+</ul>
+<ul class="dropdown menu right-dropdown-ul">
+  <% if user_signed_in? %>
+    <li class="nav-item">
+      <%= link_to 'My Profile', user_path(current_user), class: 'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link', style:'padding-right:0;' do %>
+        <span>
+          Logout
+        </span>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

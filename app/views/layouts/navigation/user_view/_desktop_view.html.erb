@@ -1,0 +1,41 @@
+<ul class="dropdown menu">
+  <% if user_signed_in? %>
+    <li id="logo">
+      <%= link_to dashboard_path, id: 'logo-link' do %>
+        <%= image_tag 'jakara-logo.png', id: 'jakara-logo' %>
+      <% end %>
+    </li>
+    <% if is_admin? %>
+      <li class="nav-item">
+        <%= link_to 'Admin', admin_events_path %>
+      </li>
+    <% end %>
+    <li class="nav-item">
+      <%= link_to 'Events', dashboard_events_path %>
+      <section class="<%= ('pointer' if params[:controller].split('/').last&.eql?('events')) %>"></section>
+    </li>
+  <% else %>
+    <li id="logo">
+      <%= link_to root_path, id: 'logo-link' do %>
+        <%= image_tag 'jakara-logo.png', id: 'jakara-logo' %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+<ul class="dropdown menu">
+  <% if user_signed_in? %>
+    <li class="nav-item">
+      <%= link_to 'My Profile', user_path(current_user), class: 'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link', id: 'logout' %>
+    </li>
+  <% else %>
+    <li class="nav-item" id="sign-up-button">
+      <%= link_to 'Sign up', new_user_registration_path %>
+    </li>
+    <li class="nav-item" id="sign-in-button">
+      <%= link_to 'Sign in', new_user_session_path %>
+    </li>
+  <% end %>
+</ul>

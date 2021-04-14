@@ -1,0 +1,14 @@
+<div class="navigation top-bar">
+  <div class="top-bar-left">
+    <div class="page-container">
+      <div class="nav-page-wrapper">
+        <div class="<%= ('logged-out-view' unless user_signed_in?) %> navigation-wrapper user-view show-for-medium">
+          <%= render partial: 'layouts/navigation/user_view/desktop_view' %>
+        </div>
+        <div class="navigation-wrapper show-for-small-only">
+          <%= render partial: 'layouts/navigation/user_view/mobile_view' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

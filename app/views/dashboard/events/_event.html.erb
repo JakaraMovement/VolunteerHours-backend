@@ -1,0 +1,23 @@
+<div class="grid-x grid-margin-x grid-margin-y event-container">
+	<% @events.each do |event| %>
+		<div class="cell large-3 medium-6 event-wrapper">
+			<%= link_to dashboard_event_path(event) do %>
+				<div class="event-image" style="background-image: url(<%= event_image_or_default_url(event) %>)"></div>
+				<div class="event-context-wrapper">
+					<h2 class="event-name">
+						<%= event.name %>
+					</h2>
+					<p class="event-region">
+						<%= event.region.name %>
+					</p>
+					<p class="help-text event-date">
+						<%= format_date(event.start_time) %>
+					</p>
+					<p class="help-text event-time">
+						<%= format_start_time(event) %>
+					</p>
+				</div>
+			<% end %>
+		</div>
+	<% end %>
+</div>

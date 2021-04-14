@@ -1,0 +1,18 @@
+<h4>
+  Comments
+</h4>
+<% @event.comments.each do |comment| %>
+  <div class="cell">
+    <span>
+      <%= "#{comment.user.first_name} #{comment.user.last_name}" %>
+    </span>
+  </div>
+  <div class="cell">
+    <%= comment.text %>
+  </div>
+<% end %>
+<%= simple_form_for [ :dashboard, @event, @comment ] do |f| %>
+  <%= f.input :text, label: 'Comment ( optional )', class: 'helper-text', input_html: {rows: 4, oninput: "if ($(this).val().length) {$('#submit-comment-btn').attr('disabled',false)} else {$('#submit-comment-btn').attr('disabled',true)}"} %>
+  <%= # f.file_field :image, multiple: true %>
+  <%= f.submit 'Submit', class: 'button', id: 'submit-comment-btn', disabled: '' %>
+<% end %>

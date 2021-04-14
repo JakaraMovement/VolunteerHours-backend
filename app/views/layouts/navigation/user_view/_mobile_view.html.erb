@@ -1,0 +1,49 @@
+<% if user_signed_in? %>
+  <ul class="dropdown menu">
+    <li>
+      <a href="javascript:void(0)" id="burger-menu">
+        <span class="burger-icon"></span>
+      </a>
+    </li>
+    <li id="logo">
+      <%= link_to dashboard_path, id: 'logo-link' do %>
+        <%= image_tag 'jakara-logo.png', id: 'jakara-logo' %>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link', id: 'logout' %>
+    </li>
+  </ul>
+<% else %>
+  <div id="signed-out-nav">
+    <div id="logo">
+      <%= link_to root_path, id: 'logo-link' do %>
+        <%= image_tag 'jakara-logo.png', id: 'jakara-logo' %>
+      <% end %>
+    </div>
+    <div id="authenticate-user-wrapper">
+      <div class="nav-item" id="sign-up-button">
+        <%= link_to 'Sign up', new_user_registration_path %>
+      </div>
+      <div class="nav-item" id="sign-in-button">
+        <%= link_to 'Sign in', new_user_session_path %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<div id="mobile-nav-container">
+  <%= render partial: 'layouts/navigation/user_view/side_nav' %>
+</div>
+<script>
+
+  $('#burger-menu').on('click', function(e){
+    e.preventDefault();
+    this.classList.toggle('is-active');
+    if ($('#burger-menu').hasClass('is-active')) {
+      $('#mobile-nav-container').animate({left: 0});
+    } else {
+      $('#mobile-nav-container').animate({left: -250});
+    }
+  })
+
+</script>

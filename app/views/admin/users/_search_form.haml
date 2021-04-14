@@ -1,8 +1,0 @@
-= form_tag admin_users_path, method: :get, id: 'search-users' do
-	= hidden_field_tag :direction, params[:direction]
-	= hidden_field_tag :sort, params[:sort]
-	.grid-x.grid-margin-x
-		.cell.large-5.medium-5.small-8
-			= text_field_tag :search, params[:search], placeholder: 'Search volunteers by name or email'
-		.cell.auto
-			= submit_tag 'Search', name: nil, class: 'button search-button'

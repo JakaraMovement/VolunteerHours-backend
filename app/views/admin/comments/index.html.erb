@@ -1,0 +1,45 @@
+<div class="admin-page admin-event-comments-page">
+  <div class="cell">
+    <%= link_to admin_events_path do %>
+      <i class="fa fa-chevron-left"></i>
+      Back to Events
+    <% end %>
+    <br/>
+    <br/>
+  </div>
+  <h1 class="text-center">
+    <%= "#{@event.name} Comments" %>
+  </h1>
+</div>
+<% if @event_comments.any? %>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Volunteer</th>
+          <th>Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @event_comments.each do |comment| %>
+          <tr>
+            <td>
+              <%= comment.id %>
+            </td>
+            <td>
+              <%= "#{comment.user.first_name} #{comment.user.last_name}" %>
+            </td>
+            <td>
+              <%= comment.text %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <p class="description text-center">
+    No comments were received on this event.
+  </p>
+<% end %>

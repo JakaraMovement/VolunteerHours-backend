@@ -1,0 +1,85 @@
+<div class="admin-page admin-events-page">
+  <h1 class="text-center">
+    <%= @events_title %>
+  </h1>
+  <ul class="tabs-ul">
+    <%= link_to admin_events_path(active: true), class: ('active' if params[:active] == 'true') do %>
+      <li>Active</li>
+    <% end %>
+    <%= link_to admin_events_path(active: false), class: ('active' if params[:active] == 'false') do %>
+      <li>Archived</li>
+    <% end %>
+  </ul>
+  <%= link_to 'New Event', new_admin_event_path, class: 'button' if params[:active] == 'true' %>
+  <% if @events.any? %>
+    <%= render partial: 'search_form' %>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>
+              <%= sortable('events.name', 'Name') %>
+            </th>
+            <th>Image</th>
+            <th class="show-for-medium">Description</th>
+            <th>
+              <%= sortable('start_time', 'Start') %>
+            </th>
+            <th class="show-for-medium">
+              <%= sortable('end_time', 'End') %>
+            </th>
+            <th>
+              <%= sortable('regions.name', 'Region') %>
+            </th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @events.each do |event| %>
+            <tr>
+              <td>
+                <%= event.id %>
+              </td>
+              <td>
+                <%= link_to event.name, admin_event_path(event) %>
+              </td>
+              <td>
+                <%= image_tag event_image_or_default_url(event), class: 'thumbnail' %>
+              </td>
+              <td class="show-for-medium">
+                <%= truncate(event.description) %>
+              </td>
+              <td>
+                <%= event.start_time&.strftime("%m/%d/%y") %>
+              </td>
+              <td class="show-for-medium">
+                <%= event.end_time&.strftime("%m/%d/%y") %>
+              </td>
+              <td>
+                <%= event.region.name %>
+              </td>
+              <td>
+                <%= link_to edit_admin_event_path(event), class: 'edit-action' do %>
+                  <i class="fa fa-pencil"></i>
+                <% end %>
+                <%= link_to admin_event_path(event), class: 'delete-action', data: { confirm: "Are you sure you would like to delete the #{event.name} event?", method: :delete } do %>
+                  <i class="fa fa-trash"></i>
+                <% end %>
+                <%= link_to admin_event_comments_path(event), class: 'edit-action' do %>
+                  <i class="fa fa-comments-o"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+  <div class="pagination-wrapper admin">
+    <div class="pagination-info">
+      <%= pagy_info(@pagy).html_safe %>
+    </div>
+    <%= pagy_foundation_nav(@pagy).html_safe if @pagy.pages > 1 %>
+  </div>
+</div>

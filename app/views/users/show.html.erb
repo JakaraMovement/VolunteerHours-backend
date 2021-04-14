@@ -1,0 +1,108 @@
+<div class="page-container" id="user-profile">
+	<div class="page-wrapper">
+		<div class="grid-x grid-margin-x">
+			<div class="cell large-4 medium-4 text-center">
+				<%= image_tag 'user-placeholder.png', id: 'avatar' %>
+				<div class="show-for-medium" id="hours-volunteered-wrapper">
+					<p id="hv-title">Hours volunteered:</p>
+					<p id="hv-val">
+						<%= number_with_delimiter(@hours_volunteered) %>
+					</p>
+				</div>
+			</div>
+			<div class="cell auto" id="user-profile-info">
+				<div class="name-wrapper">
+					<h1 id="name">
+						<%= @user.name %>
+					</h1>
+					<p class="show-for-medium" id="work">
+						<%= @user.volunteer %>
+					</p>
+				</div>
+				<div class="show-for-small-only" id="hours-volunteered-wrapper">
+					<p id="hv-title">Hours volunteered:</p>
+					<p id="hv-val">
+						<%= number_with_delimiter(@hours_volunteered) %>
+					</p>
+				</div>
+				<ul class="tabs" data-deep-link="true" data-update-history="true" id="user-info-tabs">
+					<li class="tabs-title is-active">
+						<a aria-selected="true" href="#contact-info">contact</a>
+					</li>
+					<li class="tabs-title">
+						<a href="#other-info">other</a>
+					</li>
+				</ul>
+				<div class="tabs-content" data-tabs-content="user-info-tabs">
+					<div class="tabs-panel is-active" id="contact-info">
+						<div class="tabs-content-wrapper">
+							<div class="user-info" id="phone">
+								<p class="user-info-title">phone:</p>
+								<p class="user-info-val">
+									<%= link_to format_phone_num(@user.phone), "tel: #{format_phone_num(@user.phone)}" %>
+								</p>
+							</div>
+							<div class="user-info" id="address">
+								<p class="user-info-title">address:</p>
+								<div id="address-wrapper">
+									<p class="user-info-val" id="user-address">
+										<%= @user.address %>
+									</p>
+									<p class="user-info-val">
+										<%= "#{@user.city}, #{@user.state} #{@user.zip_code}" %>
+									</p>
+								</div>
+							</div>
+							<div class="user-info" id="email">
+								<p class="user-info-title">email:</p>
+								<p class="user-info-val">
+									<%= mail_to(@user.email) %>
+								</p>
+							</div>
+						</div>
+						<h3 class="section-heading">parent info</h3>
+						<div class="tabs-content-wrapper">
+							<div class="user-info" id="parent-name">
+								<p class="user-info-title">Name:</p>
+								<p class="user-info-val">
+									<%= @user.parent_name %>
+								</p>
+							</div>
+							<div class="user-info" id="parent-contact">
+								<p class="user-info-title">Phone:</p>
+								<p class="user-info-val">
+									<%= link_to format_phone_num(@user.parent_phone), "tel: #{format_phone_num(@user.parent_phone)}" %>
+								</p>
+							</div>
+							<div class="user-info" id="parent-email">
+								<p class="user-info-title">Email:</p>
+								<p class="user-info-val">
+									<%= mail_to(@user.parent_email) %>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="tabs-panel" id="other-info">
+						<h3 class="section-heading">other info</h3>
+						<div class="tabs-content-wrapper">
+							<div class="user-info" id="birthday">
+								<p class="user-info-title">birthday:</p>
+								<p class="user-info-val">
+									<%= @user.birthday.strftime('%B %d, %Y') %>
+								</p>
+							</div>
+							<% unless @admin_user %>
+								<div class="user-info" id="school-year">
+									<p class="user-info-title">School Year:</p>
+									<p class="user-info-val">
+										<%= @user.school_year %>
+									</p>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

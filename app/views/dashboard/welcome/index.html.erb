@@ -1,0 +1,13 @@
+<div class="page-container" id="dashboard-index">
+  <div class="page-wrapper">
+    <h1 class="dashboard-page-title">
+      <%= "Welcome to your dashboard, #{current_user.first_name}!" %>
+    </h1>
+    <p id="hours-volunteered">
+      Total hours volunteered:
+      <span>
+        <%= @total_hours_volunteered %>
+      </span>
+    </p>
+  </div>
+</div>

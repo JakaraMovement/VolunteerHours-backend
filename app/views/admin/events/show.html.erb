@@ -1,0 +1,60 @@
+<div class="admin-page admin-events-page">
+  <div class="cell">
+    <%= link_to admin_events_path do %>
+      <i class="fa fa-chevron-left"></i>
+      Back to Events
+    <% end %>
+    <br/>
+    <br/>
+  </div>
+  <h1 class="text-center">
+    <%= @event.name %>
+  </h1>
+  <% if @total_hours_volunteered > 0 %>
+    <% if pending_volunteer_hours_review?( @event ) %>
+      <p class="description text-center error-message">
+        Volunteer hours are pending your review for this event.
+      </p>
+    <% end %>
+    <p class="description">
+      Total hours volunteered:
+      <span>
+        <%= @total_hours_volunteered %>
+      </span>
+    </p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>
+              <%= sortable('users.first_name, users.last_name','Volunteer') %>
+            </th>
+            <th>
+              <%= sortable('volunteer_hours.time_worked', 'Hours Volunteered') %>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @event_volunteers.each do |volunteer| %>
+            <tr>
+              <td>
+                <%= volunteer.name %>
+              </td>
+              <td>
+                <%= hours_volunteered( volunteer.id, @event.id ) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% elsif pending_volunteer_hours_review?( @event ) %>
+    <p class="description text-center error-message">
+      Volunteer hours are pending your review for this event.
+    </p>
+  <% else %>
+    <p class="description text-center">
+      No volunteer hours submitted for this event, yet.
+    </p>
+  <% end %>
+</div>

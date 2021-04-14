@@ -1,6 +1,0 @@
-.grid-x
-	.cell.large-6.medium-6
-		= simple_form_for [:admin, @region] do |f|
-			= f.input :name
-			= f.submit 'Save', class: 'button'
-			= link_to 'Cancel', admin_regions_path, class: 'button', style: 'margin-left:0.5rem;'

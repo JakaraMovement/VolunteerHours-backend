@@ -1,0 +1,96 @@
+<div class="admin-page admin-vh-page">
+  <h1 class="text-center">Volunteer Hours</h1>
+  <%= link_to 'New volunteer hour', new_admin_volunteer_hour_path, class: 'button' %>
+  <ul class="tabs-ul">
+    <%= link_to admin_volunteer_hours_path(reviewed: true), class: ('active' if params[:reviewed] == 'true') do %>
+      <li>Reviewed</li>
+    <% end %>
+    <%= link_to admin_volunteer_hours_path(reviewed: false), class: ('active' if params[:reviewed] == 'false') do %>
+      <li>Pending Review</li>
+    <% end %>
+  </ul>
+  <%= render partial: 'filter_by_school_year' %>
+  <% if @volunteer_hours.any? %>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>
+              <%= sortable('users.first_name, users.last_name','Volunteer') %>
+            </th>
+            <th>
+              <%= sortable('events.name','Event') %>
+            </th>
+            <th>
+              <%= sortable('regions.name', 'Region') %>
+            </th>
+            <th>
+              <%= sortable('time_worked', 'Hours Volunteered') %>
+            </th>
+            <th>
+              <%= sortable('status','Review Status') %>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @volunteer_hours.each_with_index do |volunteer_hour, i| %>
+            <tr>
+              <td>
+                <%= volunteer_hour.id %>
+              </td>
+              <td>
+                <%= "#{volunteer_hour.user.name}" %>
+              </td>
+              <td>
+                <%= volunteer_hour.event.name %>
+              </td>
+              <td>
+                <%= volunteer_hour.region.name %>
+              </td>
+              <td>
+                <div class="display-time-worked" id="display-time-worked-<%= i+1 %>">
+                  <span>
+                    <%= volunteer_hour.time_worked %>
+                  </span>
+                  <span class="edit-time-worked-txt" onclick="$("#display-time-worked-<%= i+1 %>").hide();$("#edit-time-worked-form-<%= i+1 %>").css('display', 'flex');">Edit</span>
+                </div>
+                <%= form_with url: admin_volunteer_hour_update_hour_path(volunteer_hour), html: {id: "edit-time-worked-form-#{i+1}", class: 'edit-time-worked-form', onsubmit: "$(\"#display-time-worked-#{i+1}\").show();$(\"#edit-time-worked-form-#{i+1}\").hide()"} do |f| %>
+                  <%= f.hidden_field :status, value: volunteer_hour.status %>
+                  <div class="time-worked">
+                    <%= f.number_field :time_worked, value: volunteer_hour.time_worked, step: :any %>
+                    <div class="help-text">
+                      <%= "max limit: #{volunteer_hour.event.max_limit}" %>
+                    </div>
+                  </div>
+                  <%= f.submit 'Update' %>
+                  <span>
+                    <%= '|' %>
+                  </span>
+                  <span class="cancel-time-worked" onclick="$("#display-time-worked-<%= i+1 %>").show();$("#edit-time-worked-form-<%= i+1 %>").hide()">Cancel</span>
+                <% end %>
+              </td>
+              <td>
+                <% if volunteer_hour.status == VolunteerHour::REQUESTED %>
+                  <%= link_to 'Accept', admin_volunteer_hour_update_status_path(volunteer_hour, status: VolunteerHour::ACCEPTED), method: :post %>
+                  |
+                  <%= link_to 'Reject', admin_volunteer_hour_update_status_path(volunteer_hour, status: VolunteerHour::REJECTED), method: :post, data: {confirm: "Are you sure you'd like to reject #{volunteer_hour.user.first_name}'s hours #{volunteer_hour.user.gender.eql?('Male') ? 'he' : 'she'} submitted for #{volunteer_hour.event.name}?"} %>
+                <% else %>
+                  <%= volunteer_hour.status&.capitalize %>
+                  |
+                  <%= link_to 'Undo', admin_volunteer_hour_update_status_path(volunteer_hour, status: VolunteerHour::REQUESTED), method: :post %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+  <div class="pagination-wrapper admin">
+    <div class="pagination-info">
+      <%= pagy_info(@pagy).html_safe %>
+    </div>
+    <%= pagy_foundation_nav(@pagy).html_safe if @pagy.pages > 1 %>
+  </div>
+</div>

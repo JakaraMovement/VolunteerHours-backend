@@ -1,0 +1,12 @@
+<%= form_tag admin_users_path, method: :get, id: 'search-users' do %>
+	<%= hidden_field_tag :direction, params[:direction] %>
+	<%= hidden_field_tag :sort, params[:sort] %>
+	<div class="grid-x grid-margin-x">
+		<div class="cell large-5 medium-5 small-8">
+			<%= text_field_tag :search, params[:search], placeholder: 'Search volunteers by name or email' %>
+		</div>
+		<div class="cell auto">
+			<%= submit_tag 'Search', name: nil, class: 'button search-button' %>
+		</div>
+	</div>
+<% end %>

@@ -1,0 +1,62 @@
+<div class="admin-page admin-users-page">
+  <h1 class="text-center">Volunteers</h1>
+  <% if @users.any? %>
+    <%= render partial: 'search_form' %>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>
+              <%= sortable('users.first_name, users.last_name','Name') %>
+            </th>
+            <th>
+              <%= sortable('email') %>
+            </th>
+            <th>Phone #</th>
+            <th>
+              <%= sortable('admin') %>
+            </th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |volunteer| %>
+            <tr>
+              <td>
+                <%= volunteer.id %>
+              </td>
+              <td>
+                <%= link_to volunteer.name, user_path(volunteer) %>
+              </td>
+              <td>
+                <%= volunteer.email %>
+              </td>
+              <td id="phone-num">
+                <%= format_phone_num(volunteer.phone) %>
+              </td>
+              <td>
+                <%= volunteer.admin? %>
+              </td>
+              <td>
+                <% if current_user.eql?(volunteer) %>
+                  <%= link_to 'Edit', edit_admin_user_path(volunteer) %>
+                  |
+                  <%= link_to 'Delete', admin_user_path(volunteer), class: 'delete-action', data: { confirm: 'Are you sure?', method: :delete } %>
+                <% else %>
+                  <%= link_to 'Delete', admin_user_path(volunteer), class: 'delete-action', data: { confirm: 'Are you sure?', method: :delete } %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+  <div class="pagination-wrapper admin">
+    <div class="pagination-info">
+      <%= pagy_info(@pagy).html_safe %>
+    </div>
+    <%= pagy_foundation_nav(@pagy).html_safe if @pagy.pages > 1 %>
+  </div>
+</div>

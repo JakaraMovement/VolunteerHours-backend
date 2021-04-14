@@ -1,0 +1,51 @@
+<div id="filter-by-text-wrapper">
+	<h2 class="filter-by-text">Filter by:</h2>
+</div>
+<div id="filter-options-wrapper">
+	<div id="regions-wrapper">
+		<%= form_with url: filter_dashboard_events_path, method: :get do |f| %>
+			<%= f.select :region_id, options_for_select(Region.all.collect{|region| [region.name, region.id]}, params[:region_id].present? ? [Region.find(params[:region_id]).name, params[:region_id]] : nil), {prompt: 'Region'}, class: ('selected-region' if params[:region_id].present?), 'data-remote' => true, onchange: 'this.form.submit();' %>
+		<% end %>
+	</div>
+	<div id="past-events-wrapper">
+		<%= form_with url: filter_dashboard_events_path, method: :get do |f| %>
+			<%= hidden_field_tag :past_events, true %>
+			<div class="<%= ('selected-filter' if params[:past_events]) %> event-type show-for-medium" id="past-events" onclick="$(this).closest('form').submit()">
+				Past Events
+			</div>
+			<div class="<%= ('selected-filter' if params[:past_events]) %> event-type show-for-small-only" id="past-events" onclick="$(this).closest('form').submit()">
+				Past
+			</div>
+		<% end %>
+	</div>
+	<div id="upcoming-events-wrapper">
+		<%= form_with url: filter_dashboard_events_path, method: :get do |f| %>
+			<%= hidden_field_tag :upcoming_events, true %>
+			<div class="<%= ('selected-filter' if params[:upcoming_events]) %> event-type show-for-large" id="upcoming-events" onclick="$(this).closest('form').submit()">
+				Upcoming Events
+			</div>
+			<div class="<%= ('selected-filter' if params[:upcoming_events]) %> event-type hide-for-large" id="upcoming-events" onclick="$(this).closest('form').submit()">
+				Upcoming
+			</div>
+		<% end %>
+	</div>
+	<div id="my-events-wrapper">
+		<%= form_with url: filter_dashboard_events_path, method: :get do |f| %>
+			<%= hidden_field_tag :my_events, true %>
+			<div class="<%= ('selected-filter' if params[:my_events]) %> event-type show-for-medium" id="my-events" onclick="$(this).closest('form').submit()">
+				My Events
+			</div>
+		<% end %>
+	</div>
+	<div id="clear-filters-wrapper">
+		<%= form_with url: filter_dashboard_events_path, method: :get do |f| %>
+			<%= hidden_field_tag :clear_filters, true %>
+			<div class="show-for-medium" id="clear-filters" onclick="$(this).closest('form').submit()">
+				Clear Filters
+			</div>
+			<div class="show-for-small-only" id="clear-filters" onclick="$(this).closest('form').submit()">
+				Clear
+			</div>
+		<% end %>
+	</div>
+</div>

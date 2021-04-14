@@ -1,0 +1,24 @@
+<% selected_region = Region.find(params[:region_id]).name if params[:region_id].present? %>
+<div id="filter-by-container">
+	<div id="filter-by-wrapper">
+		<%= render partial: 'dashboard/events/filter_by' %>
+	</div>
+</div>
+<div class="page-container events">
+	<div class="page-wrapper">
+		<div class="grid-x">
+			<div class="cell pagination-wrapper">
+				<div class="pagination-info">
+					<%= pagy_info(@pagy).html_safe %>
+					<span>
+						<%= "in #{selected_region}" if params[:region_id].present? %>
+					</span>
+				</div>
+				<%= pagy_foundation_nav(@pagy).html_safe if @pagy.pages > 1 %>
+			</div>
+			<div class="cell">
+				<%= render partial: 'dashboard/events/event' %>
+			</div>
+		</div>
+	</div>
+</div>
