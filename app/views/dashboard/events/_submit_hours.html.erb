@@ -1,0 +1,64 @@
+<div class='reveal' data-reveal='' id='submit-hours-modal'>
+  <div class="grid-x">
+    <% if @event_volunteer_hour.present? %>
+      <h4>Hours submitted</h4>
+      <table>
+        <thead>
+        <tr>
+          <th>Time worked</th>
+          <th>Submitted on</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>
+            <%= @event_volunteer_hour.time_worked %>
+            hrs
+          </td>
+          <td>
+            <%= format_date(@event_volunteer_hour.created_at) %>
+          </td>
+          <td>
+            <% if @event_volunteer_hour.status.eql?(VolunteerHour::ACCEPTED) %>
+              <span id="approved-status">Approved</span>
+            <% elsif @event_volunteer_hour.status.eql?(VolunteerHour::REJECTED) %>
+              <span id="rejected-status">Rejected</span>
+            <% else %>
+              <span id="pending-review-status">Pending Review</span>
+            <% end %>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    <% else %>
+      <h4>Submit hours</h4>
+      <div class="cell">
+        <% if @event_volunteer_hour.present? && @event_volunteer_hour.status.eql?(VolunteerHour::REJECTED) %>
+          <span id="rejected-status">Your previously submitted hours were rejected, please resubmit</span>
+          <br/>
+          <br/>
+        <% end %>
+        <%= form_for [:dashboard, @event, @volunteer_hour] do |f| %>
+          <%= f.label 'Time worked:' %>
+          <div class="grid-x grid-margin-x" id="hours-worked-wrapper">
+            <div class="cell large-3 medium-3 small-4">
+              <%= select_tag 'hours_worked', options_for_select(1..@event.max_limit), prompt: 'Hours', onchange: "if ($(this).val() == #{@event.max_limit}) {$('#minutes-worked').attr('disabled',true);$('#minutes-worked')[0].selectedIndex = 0;} else {$('#minutes-worked').attr('disabled',false)}", required: '' %>
+            </div>
+            <span>:</span>
+            <div class="cell large-3 medium-3 small-4">
+              <%= select_tag 'minutes_worked', options_for_select(1..59), prompt: 'Minutes', id: 'minutes-worked' %>
+            </div>
+          </div>
+          <p class="help-text">
+            <%= "max limit: #{@event.max_limit} hrs" %>
+          </p>
+          <%= f.submit 'Submit', class: 'button' %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <button aria-label="Close modal" class="close-button" type="button" data-close="">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
