@@ -1,5 +1,5 @@
 {
-  "name": "vm-app",
+  "name": "volunteer-hours",
   "private": true,
   "dependencies": {
     "foundation-sites": "^6.5.3"
