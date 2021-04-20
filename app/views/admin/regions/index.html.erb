@@ -19,7 +19,7 @@
               <%= region.id %>
             </td>
             <td>
-              <%= region.name %>
+              <%= link_to region.name, admin_region_users_path(region) %>
             </td>
             <td>
               <%= link_to edit_admin_region_path(region), class: 'edit-action' do %>

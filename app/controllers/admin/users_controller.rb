@@ -1,10 +1,16 @@
 # frozen_string_literal: true
 
 class Admin::UsersController < AdminController
+  load_resource :region
+
   before_action :load_user, except: [:index]
   
   def index
-    @pagy, @users = pagy(User.search(params[:search]).order(sort_by_multiple_columns))
+    @pagy, @users = if @region
+      pagy(@region.users.distinct)
+    else
+      pagy(User.search(params[:search]).order(sort_by_multiple_columns))
+    end
   end
 
   def update

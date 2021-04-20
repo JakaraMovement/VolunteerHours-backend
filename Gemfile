@@ -13,6 +13,8 @@ gem 'mimemagic', '~> 0.3.10'
 # Font Awesome Icons
 gem "font-awesome-rails"
 
+gem 'cancancan'
+
 gem 'simple_form'
 
 gem 'haml-rails', '~> 2.0'

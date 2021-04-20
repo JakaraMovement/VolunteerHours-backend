@@ -23,7 +23,9 @@ Rails.application.routes.draw do
     resources :events do
       resources :comments, only: :index
     end
-    resources :regions
+    resources :regions do
+      resources :users, only: :index
+    end
     resources :users
     resources :volunteer_hours do
       post 'update_hour', as: :update_hour
