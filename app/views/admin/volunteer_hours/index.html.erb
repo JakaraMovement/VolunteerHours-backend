@@ -72,13 +72,13 @@
               </td>
               <td>
                 <% if volunteer_hour.status == VolunteerHour::REQUESTED %>
-                  <%= link_to 'Accept', admin_volunteer_hour_update_status_path(volunteer_hour, status: VolunteerHour::ACCEPTED), method: :post %>
+                  <%= link_to 'Accept', admin_volunteer_hour_update_status_path(volunteer_hour, status: VolunteerHour::ACCEPTED, page: params['page']), method: :post %>
                   |
-                  <%= link_to 'Reject', admin_volunteer_hour_update_status_path(volunteer_hour, status: VolunteerHour::REJECTED), method: :post, data: {confirm: "Are you sure you'd like to reject #{volunteer_hour.user.first_name}'s hours #{volunteer_hour.user.gender.eql?('Male') ? 'he' : 'she'} submitted for #{volunteer_hour.event.name}?"} %>
+                  <%= link_to 'Reject', admin_volunteer_hour_update_status_path(volunteer_hour, status: VolunteerHour::REJECTED, page: params['page']), method: :post, data: {confirm: "Are you sure you'd like to reject #{volunteer_hour.user.first_name}'s hours #{volunteer_hour.user.gender.eql?('Male') ? 'he' : 'she'} submitted for #{volunteer_hour.event.name}?"} %>
                 <% else %>
                   <%= volunteer_hour.status&.capitalize %>
                   |
-                  <%= link_to 'Undo', admin_volunteer_hour_update_status_path(volunteer_hour, status: VolunteerHour::REQUESTED), method: :post %>
+                  <%= link_to 'Undo', admin_volunteer_hour_update_status_path(volunteer_hour, status: VolunteerHour::REQUESTED, page: params['page']), method: :post %>
                 <% end %>
               </td>
             </tr>

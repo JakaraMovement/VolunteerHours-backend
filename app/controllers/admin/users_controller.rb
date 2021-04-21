@@ -7,7 +7,7 @@ class Admin::UsersController < AdminController
   
   def index
     @pagy, @users = if @region
-      pagy(@region.users.distinct)
+      pagy(@region.users.distinct.order(sort_by_multiple_columns))
     else
       pagy(User.search(params[:search]).order(sort_by_multiple_columns))
     end

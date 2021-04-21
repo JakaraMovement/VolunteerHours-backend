@@ -1,0 +1,16 @@
+<%= form_for [:dashboard, @event, @volunteer_hour] do |f| %>
+  <%= f.label 'Time worked:' %>
+  <div class="grid-x grid-margin-x" id="hours-worked-wrapper">
+    <div class="cell large-3 medium-3 small-4">
+      <%= select_tag 'hours_worked', options_for_select(1..@event.max_limit), prompt: 'Hours', onchange: "if ($(this).val() == #{@event.max_limit}) {$('#minutes-worked').attr('disabled',true);$('#minutes-worked')[0].selectedIndex = 0;} else {$('#minutes-worked').attr('disabled',false)}", required: '' %>
+    </div>
+    <span>:</span>
+    <div class="cell large-3 medium-3 small-4">
+      <%= select_tag 'minutes_worked', options_for_select(1..59), prompt: 'Minutes', id: 'minutes-worked' %>
+    </div>
+  </div>
+  <p class="help-text">
+    <%= "max limit: #{@event.max_limit} hrs" %>
+  </p>
+  <%= f.submit 'Submit', class: 'button' %>
+<% end %>
